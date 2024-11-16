@@ -30,10 +30,12 @@ form.addEventListener('submit', async(e) => {
         const reply = await res.json();
         //.split('\n').join('<br ')
         output.innerHTML = `
-            <h3> Score: ${reply.score} </h3>
+            <h4> Score: ${reply.score} </h4>
             <pre>${reply.comments}</pre>
         `;
         //pre tag for autoformatting
+
+        console.log(reply.comments);
     }catch(err){
         output.inner = err;
     }
