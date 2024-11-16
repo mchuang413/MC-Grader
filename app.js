@@ -6,7 +6,9 @@ import path from 'path';
 
 const app = express();
 
-app.use(express.static(path.join(process.cwd(), 'public')));
+const __dirname = import.meta.dirname;  //thank you stack overflow
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
