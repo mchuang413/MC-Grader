@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors'
-import gradeRouter from './routes/upload.js'; 
+import gradeRouter from './routes/grade.js'; 
 import dotenv from 'dotenv';
 import path from 'path';
 
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 dotenv.config();
 app.use(cors());
 
-app.use('/upload', gradeRouter);
+app.use('/grade', gradeRouter);
 
 const port = 3000;
 app.listen(port, () => {

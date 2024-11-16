@@ -1,0 +1,176 @@
+Lab 6.2 RegularPolygon
+Background:
+Polygons are two-dimensional shapes formed by line segments. The segments are edges that meet in pairs at corners called vertices. A polygon is regular if all its sides are equal and all its angles are equal.
+
+For an n-sided regular polygon of side s, the angle at any vertex is q, and the radii of the inscribed and circumscribed circles are r and R respectively. A 5-sided regular polygon (pentagon) would be represented as follows:
+
+
+
+Assignment:
+
+Create a RegularPolygon class to model any regular polygon. Use the following declarations as a starting point for your lab work. Make sure you declare your methods and fields exactly as written here.
+
+
+
+Write two constructor methods. The default constructor creates a 3-sided polygon (triangle) with side lengths 1. The other constructor takes an integer value representing the number of sides and a double value representing the length of the sides and constructs the corresponding regular polygon. In both cases, all the fields should be initialized to the correct values.
+
+Write a public instance method named vertexAngle that calculates and returns the vertex angle as a double. This angle can be determined as follows:
+
+
+
+where n represents the number of sides.
+
+Write a public instance method named perimeter that calculates and returns the perimeter as a double. This value is determined simply as the number of sides, n, times the length of a side, s:
+
+
+
+Write a private instance method named calcr that calculates the radius of the inscribed circle, r, and sets the value of the instance variable myr to the result. Make sure this method is called in each constructor so myr gets initialized. The inscribed circle is the circle that can be drawn inside of the regular polygon such that it is tangent to every side of the polygon, for example, the smaller circle in the diagram above. It can be calculated as:
+
+
+
+where n represents the number of sides, s represents the length of a side, and cot() is the trigonometric function, cotangent. We use the value π instead of 180 in the formula because the Java math functions assume that angles are given in radians instead of degrees. Note: the Math class has a public static final field named PI that holds the value of π. An alternative is to replace π with 180 in all the formulas here and use the toRadians method from the Math Class to convert from degrees to radians.
+
+The cotangent function is not part of the Math class, however, the cotangent of an angle can be calculated as the reciprocal of the tangent as follows:
+
+
+
+Write a private instance method named calcR that calculates the radius of the circumscribed circle, R, and sets the value of the instance variable myR to the result. Be sure to call this method in both constructors to initialize myR. The circumscribed circle is the circle that intersects each vertex of the polygon, for example the larger circle in the diagram above. R can be calculated as:
+
+
+
+where n represents the number of sides, s represents the length of a side and csc() is the trigonometric function, cosecant. The cosecant function is not part of the Math class, however, the cosecant of an angle can be calculated as the reciprocal of the sine as follows:
+
+
+
+Write a public instance method named area that calculates the area of the regular polygon and returns the result as a double. It can be calculated as:
+
+
+
+where n represents the number of sides and R represents the radius of the circumscribed circle.
+
+All trigonometric functions in the Math class take radians as the parameter. To convert an angle measured in degrees to the equivalent angle measured in radians use the following method from the Math class:
+
+public static double  toRadians(double  angdeg)
+Include getters for each of the instance variables: getNumSides, getSideLength, getR, and getr.
+
+Testing and Submission Instructions:
+Test the default constructor by constructing a regular polygon with no parameters as follows:
+
+P3_Wang_Michael_RegularPolygon poly = new P3_Wang_Michael_RegularPolygon();
+Use the second constructor to test other regular polygons. Use the following values to test your functions:
+
+Square: number of sides = 4, length of side = 10
+Octagon: number of sides = 8, length of side = 5.75
+Enneadecagon: number of sides = 19, length of side = 2
+Enneacontakaihenagon: number of sides = 91, length of side = 0.5
+
+Rubric:
+Lab 6.2 Regular Polygon
+
+Read the Lab instructions.
+
+You can use this Driver as a way to test their class. Simply change the class name.
+
+import java.util.ArrayList;
+
+public class PolygonDriver {
+    public static void main(String[] args) {
+        ArrayList<RegularPolygon> polygons = new ArrayList<>();
+        polygons.add(new RegularPolygon());
+        polygons.add(new RegularPolygon(4, 10));
+        polygons.add(new RegularPolygon(8, 5.75));
+        polygons.add(new RegularPolygon(19, 2));
+        polygons.add(new RegularPolygon(91, 0.5));
+        
+        System.out.printf("%5s%10s%10s%10s%10s%10s%10s\n", "n", "s  ", " (degrees)", "r  ", "R  ", "Perimeter", "Area ");
+        for (RegularPolygon p : polygons) {
+            System.out.printf("%5d%10.2f%10.2f%10.2f%10.2f%10.2f%10.2f\n", p.getNumSides(), p.getSideLength(), p.vertexAngle(), p.getr(), p.getR(), p.perimeter(), p.area());
+        }
+    }
+}
+
+If they did the lab correctly, the output should be this:
+
+    n       s   (degrees)       r         R   Perimeter     Area 
+    3      1.00     60.00      0.29      0.58      3.00      0.43
+    4     10.00     90.00      5.00      7.07     40.00    100.00
+    8      5.75    135.00      6.94      7.51     46.00    159.64
+   19      2.00    161.05      5.99      6.08     38.00    113.86
+   91      0.50    176.04      7.24      7.24     45.50    164.68
+
+For each column:
+-1 per column that is entirely wrong
+-0.5 per column that is partially wrong (i.e. degrees of 19-gon or 91-gon)
+-0.5 for each incorrect method or constructor declaration (including access modifiers)
+-0.5 for failing to make instance variables private (they must all be private)
+-0.25 if any required method or constructor prints anything (it's ok if extra methods print info)
+
+After subtracting points for incorrect method names, fix the names and run their code again to get their output.
+
+
+
+A sample solution:
+
+public class RegularPolygon {
+
+	private int myNumSides;			// # of sides
+	private double mySideLength;			// length of a side
+	private double myR;				// radius of circumscribed circle
+	private double myr;				// radius of inscribed circle
+
+	// constructors
+	public RegularPolygon() {
+		myNumSides = 3;
+		mySideLength = 1;
+		calcr();
+		calcR();
+	}
+
+	public RegularPolygon(int numSides, double sideLength) {
+		myNumSides = numSides;
+		mySideLength = sideLength;
+		calcr();
+		calcR();
+	}
+
+	// private methods
+	private void calcr() {
+		myr = mySideLength / 2 / Math.tan(Math.PI / myNumSides);
+	}
+
+	private void calcR() {
+		myR = mySideLength / 2 / Math.sin(Math.PI / myNumSides);
+	}
+
+	// public methods
+	public double vertexAngle() {
+		return 180 * (myNumSides - 2.0) / myNumSides;
+	}
+
+	public double perimeter() {
+		return myNumSides * mySideLength;
+	}
+
+	public double area() {
+		return myNumSides  * myR * myR / 2 * Math.sin(2 * Math.PI / myNumSides);
+	}
+
+	// getters
+	public int getNumSides() {
+		return myNumSides;
+	}
+
+	public double getSideLength() {
+		return mySideLength;
+	}
+
+	public double getR() {
+		return myR;
+	}
+
+	public double getr() {
+		return myr;
+	}
+}
+
+

@@ -1,0 +1,202 @@
+Lab 6.1 Taxes
+Background
+There are many absolutes in life, one of which is taxes. In this lesson we study the tax deductions required to print a payroll check. The first tier of the federal income tax rate is about 12% and FICA is an abbreviation for Social Security Tax. The latest calculations show that the average American worker toils for the government for about 5 out of the 12 months of the year.
+
+Assignment
+Write a program that calculates, stores, and prints tax info about one person. The constructor will take the hours worked and the hourly rate paid. You are not required to line up the decimal points in your output. Note: “Gross Pay” means income before tax is deducted, and “Net Pay” means income after tax is deducted. Here is an example output:
+    Hours worked: 30.0
+    Hourly rate: 16.35
+
+    Gross pay: 490.5
+
+    Federal Tax (12.4%): 60.822  
+    FICA Tax (7.75%): 38.01375  
+    State Tax (9.3%): 45.6165
+
+    Net pay: 346.04775
+Your program may give a slightly different net pay answer due to rounding off issues. Do not worry about this difference.
+Use final values to store the tax rates in your program.
+Details
+Please do not hard-code the tax percentages.
+Instead, use the final keyword to make constants for tax rates and use these constants rather than writing numbers (this includes when printing).
+If you change the value of a tax rate, the output should change accordingly without you having to change it in more than one place.
+Make sure all final variables are CAPITALIZED_WITH_UNDERSCORES_BETWEEN_WORDS
+The constructor will take the hours worked and the hourly rate paid
+The structure of the program is up to you - but you should separate the Taxes class from the Driver.
+Among your Taxes methods, include getters, setters, and a printTaxes method.
+The only public method that should print output is printTaxes().
+Consider which access modifier is appropriate for each field and method. Other classes should only be able to change the values of fields via methods.
+Your Taxes class should never print the wrong values no matter what you do in the Driver.
+Filenames
+Name your taxes class in the format PX_LastName_FirstName_Taxes
+Name your driver class in the format PX_LastName_FirstName_TaxesDriver
+
+Rubric:
+Lab 6.1 Taxes
+
+
+Please do not hard-code the tax percentages
+Instead, use the final keyword to make constants for tax rates
+Make sure all final variables are CAPITALIZED_WITH_UNDERSCORES_BETWEEN_WORDS
+The constructor will take the hours worked and the hourly rate paid
+The structure of the program is up to you - but you should separate the Taxes class from the Driver.
+Among your Taxes methods, include getters, setters, and a printTaxes method.
+Your Taxes class should never print the wrong values no matter what you do in the Driver.
+Only printTaxes should print output.
+
+TA Instructions:
+6 points for a complete lab even if very broken.
+-0.5 per requirement not met
+If they didn't turn in a driver, it is ok, but their taxes class should NOT have a main method (-0.5)
+
+They need to meet the following requirements:
+They have completed the lab (6 points)
+Their code meets ALL the requirements listed above AND:
+The driver should just make an instance of Taxes and call printTaxes() on that object. If it does anything else, that is a sign Taxes is designed poorly.
+All attributes except possibly the final attributes should be private (making the final attributes private or public is their choice)
+Only the hoursWorked and hourlyRate should have public setters.
+If there are setters for hoursWorked and/or hourlyRate, the setters should ALSO update the values of the other attributes, so printTaxes() will still print the correct result.
+In general, any design that makes it possible for printTaxes() to print the wrong values is bad.
+The preferred design is to have helper methods for each calculation that simply return the result of the calculation. In this design, they won't need any attributes other than hoursWorked and hourlyRate, and they won't need to update any attributes in the setters.
+Methods that calculate or initialize attributes should not print anything. ONLY printTaxes() should print things.
+
+
+Examples of well designed tax classes.
+Taxes class with methods that return calculations.
+
+public class Taxes {
+    private final double FEDERAL_TAX = 0.154;
+    private final double FICA_TAX = 0.0775;
+    private final double STATE_TAX = 0.04;
+	
+	private double hours;
+	private double rate;
+	
+    public Taxes(double hours, double rate) {
+        this.hours = hours;
+        this.rate = rate;
+    }
+    
+    public void printTaxes() {
+        System.out.println("Hours worked: " + getHours());
+        System.out.println("Hourly rate: " + getRate());
+        System.out.println("\nGross pay: " + getGross());
+        System.out.println("\nFederal Tax (" + FEDERAL_TAX*100 + "%): " + getFedTax());
+        System.out.println("FICA Tax (" + FICA_TAX*100 + "%): " + getFicaTax());
+        System.out.println("State Tax (" + STATE_TAX*100 + "%): " + getStateTax());
+        System.out.println("\nNet pay: " + getNetPay());
+    }
+    
+    public void setHours(double h) {
+        hours = h;
+    }
+    
+    public void setRate(double r) {
+        rate = r;
+    }
+    
+    public double getHours() {
+        return hours;
+    }
+    
+    public double getRate() {
+        return rate;
+    }
+    
+    public double getGross() {
+        return hours * rate;
+    }
+    
+    public double getFedTax() {
+        return hours * rate * FEDERAL_TAX;
+    }
+    
+    public double getFicaTax() {
+        return hours * rate * FICA_TAX;
+    }
+    
+    public double getStateTax() {
+        return hours * rate * STATE_TAX;
+    }
+	
+    public double getNetPay() {
+        return getGross() - getFedTax() - getFicaTax() - getStateTax();
+    }
+}
+
+Example of Taxes with attributes that are precalculated.
+
+public class Taxes {
+    private final double FEDERAL_TAX = 0.154;
+    private final double FICA_TAX = 0.0775;
+    private final double STATE_TAX = 0.04;
+    private double hours
+    private double rate;
+    private double gross;
+    private double fedTax;
+    private double ficaTax;
+    private double stateTax;
+    private double netPay;
+    
+    public Taxes(double hours, double rate) {
+        this.hours = hours;
+        this.rate = rate;
+        calculate();
+    }
+    
+    private void calculate() {
+        gross = hours * rate;
+        fedTax = gross * FEDERAL_TAX;
+        ficaTax = gross * FICA_TAX;
+        stateTax = gross * STATE_TAX;
+        netPay = gross - fedTax - ficaTax - stateTax;
+    }
+    
+    public void printTaxes() {
+        System.out.println("Hours worked: " + hours);
+        System.out.println("Hourly rate: " + rate);
+        System.out.println("\nGross pay: " + gross);
+        System.out.println("\nFederal Tax (" + FEDERAL_TAX*100 + "%): " + fedTax);
+        System.out.println("FICA Tax (" + FICA_TAX*100 + "%): " + ficaTax);
+        System.out.println("State Tax (" + STATE_TAX*100 + "%): " + stateTax);
+        System.out.println("\nNet pay: " + netPay);
+    }
+    
+    public void setHours(double h) {
+        hours = h;
+        calculate();
+    }
+    
+    public void setRate(double r) {
+        rate = r;
+        calculate();
+    }
+    
+    public double getHours() {
+        return hours;
+    }
+    
+    public double getRate() {
+        return rate;
+    }
+    
+    public double getGross() {
+        return hours;
+    }
+    
+    public double getFedTax() {
+        return fedTax;
+    }
+    
+    public double getFicaTax() {
+        return ficaTax;
+    }
+    
+    public double getStateTax() {
+        return stateTax;
+    }
+	
+    public double getNetPay() {
+        return netPay;
+    }
+}
