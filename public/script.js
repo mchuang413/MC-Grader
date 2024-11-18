@@ -1,5 +1,9 @@
+const url = window.location.hostname === 'localhost' ?
+    'http://localhost:3000'
+    :'https://mcgrader.onrender.com';
+
 //Display dropdown
-fetch('http://localhost:3000/grade/labs')
+fetch(url + '/grade/labs')
     .then(response => response.json())
     .then(labs => {
         const selection = document.getElementById('labs');
@@ -22,7 +26,7 @@ form.addEventListener('submit', async(e) => {
     const lab = document.getElementById('labs').value;
     formData.append('lab', lab);
     try{
-        const res = await fetch("http://localhost:3000/grade", { //Defaults to GET
+        const res = await fetch(url + "/grade", { //Defaults to GET
             method: "POST",
             body: formData,
         });

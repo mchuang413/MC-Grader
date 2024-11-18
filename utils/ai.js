@@ -23,10 +23,10 @@ export async function autograde(content, lab) {
         model: 'gpt-4o-mini',
         messages: [
             { role: 'system', content: systemPrompt},
-            { role: 'system', content: `LAB INSTRUCTIONS:\n${labInfo}` },
+            { role: 'system', content: `-- START OF LAB INSTRUCTIONS: --\n${labInfo} -- END OF LAB INSTRUCTIONS: --`},
             {
                 role: 'user',
-                content: `STUDENT CODE:\n${content}`,
+                content: `-- START OF STUDENT CODE --\n${content}\n-- END OF STUDENT CODE --`,
             }
         ]
     });
