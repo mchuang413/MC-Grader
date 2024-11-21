@@ -1,6 +1,6 @@
 const url = window.location.hostname === 'localhost' ?
     'http://localhost:3000'
-    :'https://mcgrader.onrender.com';
+    :'https://mcgrader.vercel.app';
 
 //Display dropdown
 fetch(url + '/grade/labs')
