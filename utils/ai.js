@@ -16,6 +16,7 @@ function readFile(path) {
 export async function autograde(content, lab) {
     const systemPrompt = readFile(path.join(__dirname, 'system-prompt.txt'));
     const labInfo = readFile(path.join(__dirname, '..', 'labs', `${lab}.txt`));
+    if (!labInfo) return null;
 
     //console.log(labInfo);
 
@@ -35,11 +36,12 @@ export async function autograde(content, lab) {
 
     //Parse data
     const lines = message.split('\n'); //array of lines
-    const score = parseFloat(lines[0]) || 0; //TODO: add input filtering
+    const score = parseFloat(lines[0]) || -1;
     let comments = "";
     for (let i = 1; i < lines.length; i++) {
         if(i != 1) comments += '\n';
         comments += lines[i];
     }
+    if(score === -1) comments += "\nUnexpected AI formatting issue";
     return {score, comments};
 }

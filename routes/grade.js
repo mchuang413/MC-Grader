@@ -22,11 +22,8 @@ router.post('/', async (req, res) => {
         text += files.data.toString() + '\n\n';
     }
     console.log(text);
-    // console.log('File received:', file.name);
-    // console.log('Lab recieved:', lab);
-    //const text = file.data.toString();
     const answer = await autograde(text, lab);
-    console.log(answer);
+    if(!answer) res.status(400, "Lab not found");
     res.json(answer);
 });
 
