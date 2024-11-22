@@ -1,0 +1,62 @@
+Lab 13.2 Average
+Background
+Download numbers.txt. The text file contains a large amount of integers. The integers range in value from 0 to 100. The text file has been created with one value on each line.
+
+The number of integers in the file is unknown. You must continue reading the file until there are no more integers to read. Your program should work with any number of integers, however the sum of the integers will not be larger than the maximum int value.
+
+Your program must find the average of the list of numbers.
+
+Assignment
+Your program should print out the average of the data in numbers.txt to the console window. Format the average to print to the console rounded to 2 decimal places (Hint: you can use printf or use a calculation to find the rounded value).
+
+Your program should also write the average of the numbers to a new text file called "output.txt". You don't need to format the average written to the file to 2 decimal places (but it's a fun exercise to try!).
+
+Turn in your source code below. You don't need to turn in the output file.
+
+Gold Challenge
+Your program should find the average of all numbers in all .txt files in a user-selected folder.
+Your program should ignore anything that isn't a number. A number is any sequence of digits separated by one or more non-digits. No decimals.
+Example: Suppose there are .txt two files. If one file contains "10 5!3 happy2hip hop." and the other contains "1 2 3 4" the average is 3.75 because (10 + 5 + 3 + 2) + (1 + 2 + 3 + 4) = 30 and 30/8 = 3.75
+Learn about file choosers here.
+
+Lab 13.2 Average
+
+The lab directions are here:
+https://apcs.tinocs.com/lesson/A13/Z-2.md
+
+Golden challenge is not required
+
+standard header and file name penalties
+
+Coding Penalties:
+-1 hardcoding the file path (i.e. C:\Users\ted_mcleod\Desktop\Lab13.3\numbers.txt)
+-1 output is wrong ignoring rounding (check the numbers.txt file and an additional case)
+-0.5 fails to output to console (ok if it outputs wrong answer)
+-0.5 fails to write to a file (ok if it outputs the wrong answer)
+-0.5 Output to console is not rounded to 2 decimal places
+
+Numbers.txt output: 49.92
+
+
+Additional Test File:
+4
+3
+77
+5
+6
+100
+0
+0
+23
+78
+0
+4
+3
+4
+5
+6
+54
+45
+0
+
+Output: 21.95

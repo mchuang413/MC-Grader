@@ -1,0 +1,64 @@
+LAB 4.3 Rectangle
+Background:
+It is always important to have a well-designed class before writing down any code. Having a class laid out on paper before writing the code allows programmers to see any design flaws before they have coded those flaws into their classes. Determining which classes are needed, what data those classes hold, and how those classes behave are the main objectives of OOP.
+
+The specifications of a class that models a rectangular shape would be:
+
+
+
+Assignment:
+Implement a Rectangle class with the following properties.
+
+A Rectangle object is specified in the constructor with the left and right edges of the rectangle at x and x + width. The bottom and top edges are at y and y + height. You should draw this out on paper to confirm you understand which part of your rectangle is at (x, y).
+
+Initialize the 500 x 500 Sketchpad and the DrawingTool in the constructor.
+
+A method getPerimeter calculates and returns the perimeter of the Rectangle.
+
+A method getArea calculates and returns the area of the Rectangle.
+
+A method draw displays a new instance of a Rectangle object. Refer to the DrawingTool API for details on DrawingTool methods.
+
+Try your rectangle with both the default constructor and with a constructor that can take the x and y coordinates, the length of the rectangle, and the width. Here are some sample constructor calls:
+
+Rectangle rectA = new Rectangle();
+Rectangle rectB = new Rectangle(0, -80, 400, 160);
+Rectangle rectC = new Rectangle(100, -100, 20, 300);
+Extension (Optional)
+If you finished the lab, you already noticed that each Rectangle object draws in its own SketchPad window. That's because each Rectangle object has its own copy of a SketchPad and DrawingTool stored in its attributes. It's possible, however, to get all three Rectangle objects to share the same SketchPad. Here's how:
+
+Declare the SketchPad and DrawingTool attributes as static:
+
+private static DrawingTool pen 
+private static SketchPad paper
+Declaring an attribute as static makes all objects of the given type share the same copy of that attribute. Thus, in the case of having a static DrawingTool and SketchPad, all Rectangle objects use the exact same DrawingTool and SketchPad.
+
+One final detail you'll notice is that although all the drawing is done in a single SketchPad, three SketchPad windows are still created. We'll go over why this is during class... if you really want to get around it then the only solution is to create a SketchPad in the driver and pass it in as an argument to your Rectangle's constructor.
+
+Lab 4.2 Rectangle
+Lab directions are here:
+http://www.mrferrante.com/apcs/WebLessons/LessonA4/Lab-A4-2.html
+
+-0.5 for each direction not followed in the lab instructions
+Also subtract any points for missing/incomplete reflection:
+Rubric for Reflections
+
+In particular, make sure they get this part right:
+A Rectangle object is specified in the constructor with the left and right edges of the rectangle at x and x + width. The bottom and top edges are at y and y + height.
+
+Their code should place the lower left corner at x,y.
+
+// Test Driver (Modify this to work with their class)
+
+public class RectangleDriver {
+
+	public static void main(String[] args) {
+		/*
+		 * place a rectangle with 200 width and 100 height at position (-100, -50).
+		 * The rectangle should be centered in the sketchpad.
+		 */
+		new PX_Last_First_Rectangle(-100, -50, 200, 100).draw();
+	}
+
+}
+

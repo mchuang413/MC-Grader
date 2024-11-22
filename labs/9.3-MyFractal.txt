@@ -1,0 +1,35 @@
+Lab 9.3 MyFractal
+Overview
+There are many famous fractals in addition to the Koch curve and Koch snowflake from Lab 9.2. Take a look at some of the fractals below:
+
+T-Square Fractal
+Hilbert Curve
+Sierpinsky Triangle (Sierpinsky Gasket)
+Sierpinsky Carpet
+Sierpinsky Pentagon
+Sierpinski Arrowhead Curve
+Dragon Curve (Heighway's Dragon)
+Levy Dragon
+McWorter's Pentigree
+Pentadentrite
+Peano-Gosper Curve
+
+Assignment
+Having completed Lab 9.2 KochCurve and Worksheet 9.3 L-System Fractals, you now have the skills needed to create other famous L-System and base-motif fractals. Your assignment is to write a program that generates one of the famous fractals above or one of the fractals found in the galleries below. If you really want to, you can also create your own fractal rule. In any of these cases, you will need to figure out what the base shape is and what the motif (pattern, rule) is.
+
+L-System Gallery
+Google Image Search
+L-Systems - The Nature of Code
+
+Instructions
+The goal of this assignment is for YOU figure out how to draw a fractal from PICTURES only. If you have to rely on online code, pseudocode, or L-System strings, then choose an easier fractal that you can figure out yourself based on seeing pictures of Levels 0, 1, 2, 3, etc.
+
+Choose a fractal (or make up your own) and write a program to recursively draw the fractal.
+
+State the name of your fractal in a comment at the top of your program (along with the usual header.)
+
+Put all your code into a single file, including a main method that runs the program. If you have multiple classes within this file, each class must include your name. (Review the instructions for Lab 5.2 Illusions if needed.)
+
+All files must include your name and period in the format PX_LastName_FirstName_Title
+
+Submit code to the submission form below.

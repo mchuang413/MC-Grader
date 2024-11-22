@@ -1,0 +1,46 @@
+Lab 5.2 Illusions
+Background:
+When programmers solve problems via code, they often use employ two practices:
+
+Helper methods are methods written to be used inside other methods. They help break a problem into smaller chunks of reusable code.
+Generalized methods are methods that can behave differently based on the parameters passed into them. It's the exact opposite of hard-coding every detail. Instead of hard-coding values, one uses variables to make calculations and when the variables change, so does the result.
+When you write the methods for this lab, you must use both of the practices described above.
+
+Directions:
+Either do the illusion shown below, make up your own illusion, or choose one from a Google Image Search that can be properly decomposed into generalized helper methods. If your illusion does not lend itself to using lots of generalized helper methods that take parameters, you should choose a different illusion. Review Lesson 5 Slides 11 to 13 for an example of breaking down an illusion.
+
+To ensure you have generalized helper methods
+
+No attributes at all are allowed (not even a DrawingTool or SketchPad)
+All methods must be static
+All methods must accept parameters
+The Driver class should only have to call your overall draw(...) method, passing in all needed parameters.
+
+
+Lab Requirements
+
+You should not have any constructors. This is because all your methods should be static and don't need an object to run them.
+No attributes are allowed. None at all.
+Your illusion must be decomposed into static helper methods, all of which solve a subproblem of your illusion, and that take parameters that determines the overall properties of the illusion (i.e. drawing tool, position, colors, size, etc.)
+Most helper methods should call other helper methods passing relevant parameters.
+Make a Driver that draws at least two different versions of your illusion in the same SketchPad or on different SketchPads.
+While writing your code, you should test your helper methods independently to make sure they work properly
+Write javadocs for the class summary and methods
+Name your classes using the format PX_LastName_FirstName_Illusion and PX_LastName_FirstName_Driver
+
+Note that the lab on apcs.tinocs.com has different requirements now, but those are changed for next year. The requirements below are what students saw when they did the lab in 2022.
+
+
+Lab instructions are here.
+ 
+Due Sunday night 11:59 PM.
+ 
+Requirements:
+Must use helper methods
+Must be generalized via parameters / attributes
+You must have javadocs for the class, constructor and for each helper method, complete with a param tag for each parameter
+-1 for missing reflection
+-0.5 for incomplete reflection
+-1 if they didn't meet all the requirements
+-6 (resubmit required) if they totally missed the point of the lab (i.e. didn't break the problem into helper methods with parameters).
+

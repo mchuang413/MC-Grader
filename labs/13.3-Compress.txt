@@ -1,0 +1,172 @@
+Lab 13.3 Compress
+Background
+When text files are saved to disk there are various methods for compressing files to take up less space. One way of conserving disk space is to count the number of blanks at the beginning of a line and save the count as an integer. Although too simple for practical use, this method is a fun way to compress a Java source code file containing many lines of leading blank spaces (tab characters) due to indented code.
+
+Assignment
+You are provided with a text file, LeetSpeak.java, containing lines of text which may or may not have tabs in front of the lines.
+
+Rename the file with your period and name using the file system. For example, P1_Wang_Michael_LeetSpeak.java. You have to use the File Explorer or Finder to rename the file - NOT BlueJ because changing the class name in BlueJ will cause BlueJ to automatically replace all the tabs in the file with 4 spaces which will ruin the file for this lab. Also, you do not want to change any of the contents of the file, just the file name. The file does not need to compile so it is fine that the name of the class declared in the file won't match the file name anymore.
+
+The number of lines in the file is unknown.
+
+Your assignment is to write a program that compresses and decompresses the file (any Java file, really) as outlined below.
+
+Create a new class named PX_Lastname_Firstname_Compression.java in which to do your work. All methods in this class will be static in order to work as independent methods that do not rely on object attributes.
+
+File Compression
+Add a method compress(String filename) to your class. This method should read in the lines of text from the named input file, count the number of tab characters at the beginning of each line, and create a new text file that writes the number of tab characters at the beginning of each line followed by a single space character and then the line of text without leading tabs.
+
+Name your output file the same as the input file, but ending in .txt instead of .java. For example, if the input file is "P1_Wang_Michael_LeetSpeak.java" then your output file would be named P1_Wang_Michael_LeetSpeak.txt. You will need to do basic String processing on the filename parameter to get this working.
+
+Here is an example of how the data would be changed:
+
+Before compressing, shown below. Filename: P1_Wang_Michael_LeetSpeak.java
+
+import java.util.Scanner;
+
+public class P1_Wang_Michael_LeetSpeak {
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Please enter a sentence in English > ");
+        String input = in.nextLine();
+        String output = "";
+        char nextChar = 0;
+
+        // go through input and replace common characters
+
+        for (int i = 0; i < input.length(); i++) {
+
+            nextChar = input.charAt(i);
+
+            switch (nextChar) {
+
+                case 'o': case 'O': output += '0'; break;
+                case 'i': case 'I': output += '1'; break;
+                case 'z': case 'Z': output += '2'; break;
+                case 'e': case 'E': output += '3'; break;
+                case 'a': case 'A': output += '4'; break;
+                case 's': case 'S': output += '5'; break;
+                case 'g': case 'G': output += '6'; break;
+                case 't': case 'T': output += '7'; break;
+                case 'b': case 'B': output += '8'; break;
+                case 'p': case 'P': output += '9'; break;
+                default: output += nextChar;
+            }
+        }
+
+        System.out.println("\n\nThe 1337 way to write your sentence is \"" +
+                            output + "\"\n\n");
+    }   
+}
+After compressing, shown below. Filename: P1_Wang_Michael_LeetSpeak.txt
+
+0 import java.util.Scanner;
+0 
+0 public class LeetSpeak {
+1 
+1 public static void main(String[] args) {
+2 
+2 Scanner in = new Scanner(System.in);
+2 
+2 System.out.print("Please enter a sentence in English > ");
+2 String input = in.nextLine();
+2 String output = "";
+2 char nextChar = 0;
+2 
+2 // go through input and replace common characters
+2 
+2 for (int i = 0; i < input.length(); i++) {
+3 
+3 nextChar = input.charAt(i);
+3 
+3 switch (nextChar) {
+4 
+4 case 'o': case 'O': output += '0'; break;
+4 case 'i': case 'I': output += '1'; break;
+4 case 'z': case 'Z': output += '2'; break;
+4 case 'e': case 'E': output += '3'; break;
+4 case 'a': case 'A': output += '4'; break;
+4 case 's': case 'S': output += '5'; break;
+4 case 'g': case 'G': output += '6'; break;
+4 case 't': case 'T': output += '7'; break;
+4 case 'b': case 'B': output += '8'; break;
+4 case 'p': case 'P': output += '9'; break;
+4 default: output += nextChar;
+3 }
+2 }
+2 
+2 System.out.println("\n\nThe 1337 way to write your sentence is \"" +
+7 output + "\"\n\n");
+1 } 
+0 }
+File Decompression
+Next, write a decompression method decompress(String filename) that decompresses files compressed with your compress method.
+
+Your method should read the file specified by filename (which should be a .txt file that you compressed) and restore the file by decompressing it and saving it as .java instead of .txt.
+
+For example, if you decompress P1_Wang_Michael_LeetSpeak.txt it should turn into P1_Wang_Michael_LeetSpeak.java and match the original file you compressed.
+
+Hints and Heads Up
+Test your program and make sure it does not add extra space at the end of each line.
+
+Test your program and make sure it does not add an extra line at the end of the file.
+
+When decompressing, consider taking in each line using nextLine and then processing that line using a second Scanner or a StringTokenizer. StringTokenizer works like a Scanner but it operates on Strings.
+
+You will need a way to preserve and restore tab characters within each line.
+
+You may need a way to convert a String into an integer. To do this, look at the API for the Integer class.
+
+When debugging your program, consider printing output to the screen (as usual) instead of printing to an output file. That way, you can see what's happening.
+
+Consider printing a different character in place of tab characters so you can see what's happening.
+
+Carefully read any run-time errors you get. They tell you exactly why your program crashed and on what line.
+
+Lab 13.3 Compress
+
+The lab directions are here:
+https://apcs.tinocs.com/lesson/A13/Z-3.md
+
+You can use this autograder program
+Here is the LeetSpeak.java
+
+Additional penalties:
+-0.5 hardcoding the file path (i.e. C:\Users\ted_mcleod\Desktop\Lab13.3\LeetSpeak.java)
+-0.5 crashes or has incorrect output when the input file ends with an empty line
+-1 output for provided example is wrong
+-0.5 Output is incorrect using a different file (make up a file that has some lines starting with tabs and some not)
+
+Test File:
+import ShashankVenkatapuram.*;
+
+class LeetSpeak {
+	main static public string[void() args] {
+		print(“Hi”)
+	}
+
+	public void public() {
+		Hi
+		hi
+	}
+}
+
+0 import ShashankVenkatapuram.*;
+0 
+0 class LeetSpeak {
+1 main static public string[void() args] {
+2 print(“Hi”)
+1 }
+0 
+1 public void public() {
+2 Hi
+2 hi
+1 }
+0 }
+0
+
+
+

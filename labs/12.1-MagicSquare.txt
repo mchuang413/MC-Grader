@@ -1,0 +1,63 @@
+Lab 12.1 MagicSquare
+Background
+A "magic square" is any number n that is both:
+
+a perfect square
+the sum of consecutive integers from 1 to n
+For example, 36 is a magic square because it is:
+
+a perfect square (62 = 36)
+the sum of the integers from 1 to 8 (1+2+3+4+5+6+7+8 = 36)
+The next magic square is 1225:
+
+352 = 1225
+1225 = sum of 1 to 49
+Assignment
+Use long integers for this assignment.
+
+Write pseudocode (by hand on binder paper) for a method that finds and prints the first n magic squares. In other words, write a detailed strategy (written mostly in English) that tests which numbers are both perfect squares and the sum of consecutive integers. Your strategy should also address how to continue the process of finding magic squares until n magic squares have been found.
+
+Use your strategy to write a method that prints the first n magic squares. Then use your method to find the first 10 magic squares. The first magic square is the integer 1. Be aware that finding the first 10 magic squares can take a long time depending on the efficiency of your code and the processing power of your computer. If it takes more than 30 minutes for your program to find the first 10 magic squares, then only find the first 8 or 9 magic squares.
+
+Use the following code for your main() method:
+
+public static void main(String[] args) {
+
+    MagicSquare magic = new MagicSquare();
+    long startTime, endTime;
+
+    startTime = System.currentTimeMillis();
+    magic.magicsquare(10);
+    endTime = System.currentTimeMillis();
+
+    System.out.print("\nTime: " + (endTime - startTime));
+    System.out.println(" milliseconds");
+}
+Finding the next magic square takes more and more time. An interesting investigation is to find out the relationship between the magic squares you find and the time it takes to find them. Make a new method named magicsquareTimer() that keeps track of the time taken to find each magic square within the method instead of in the main() method. Your new method will essentially be a copy of the old one with the timing additions. Use this method to find the time required for each of the first 12 magic squares on your computer.
+
+Use the following form for the main method:
+
+public static void main(String[] args) {
+
+        MagicSquare magic = new MagicSquare();
+
+        magic.magicsquareTimer(12);
+}
+Your run output should look something like this:
+
+    Magic Square 1 = 1  Time: 0 milliseconds
+    Magic Square 2 = 36  Time: 0 milliseconds
+    Magic Square 3 = 1225  Time: 0 milliseconds
+    Magic Square 4 = 41616  Time: 0 milliseconds
+    Magic Square 5 = 1413721  Time: 0 milliseconds
+    Magic Square 6 = 48024900  Time: 0 milliseconds
+    Magic Square 7 = 1631432881  Time: 10 milliseconds
+    Magic Square 8 = 55420693056  Time: 31 milliseconds
+    Magic Square 9 = 1882672131025  Time: 170 milliseconds
+    Magic Square 10 = 63955431761796  Time: 1111 milliseconds
+    Magic Square 11 = 2172602007770041  Time: 5859 milliseconds
+    Magic Square 12 = 73804512832419600  Time: 34089 milliseconds
+Name your files PX_LastName_FirstName_MagicSquare and PX_LastName_FirstName_MagicSquareDriver
+
+Magic Square Contest!!! (optional)
+Think you can write the fastest MagicSquare algorithm? Compete in the Magic Square Contest! If you wish to compete, name your class with a _1 or _2 at the end to indicate which category you are entering. If you are competing in both categories then submit each file separately. Ex: P3_Wang_Michael_MagicSquare_2.java would be an entry for category 2.

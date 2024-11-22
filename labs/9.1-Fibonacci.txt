@@ -1,0 +1,110 @@
+
+Lessons
+A9
+Z-1.md
+Next
+Lab 9.1 Fibonacci
+Background:
+The Fibonacci sequence is defined as follows:
+
+Position	Fib Number
+0	0
+1	1
+2	1
+3	2
+4	3
+5	5
+6	8
+7	13
+8	21
+etc.	etc.
+Positions 0 & 1 are definition values. For positions greater than 1, the corresponding Fibonacci value of position N = Fib (N-1) + Fib (N-2).
+
+Assignment:
+Write a recursive method that takes in a single integer (x >= 0) and returns the appropriate Fibonacci number.
+Write a recursive method that solves a multiplication problem of two positive integers.
+Write a recursive method that solves a multiplication problem of any two integers, whether positive or negative.
+Bonus: Using a return type of int, find the highest Fibonacci number Java can compute on a PC. After finding it, what happens when you try to compute the next Fibonacci number? What's going on?? Can you show exactly how Java got its answer? If you're stuck, the answer lies within Lesson 3, page B.
+
+Instructions:
+Use these sample run output values:
+
+Recursive Fibonacci: 0, 3, 11, 20
+
+Recursive multiplication 1: (7 * 8), (5 * 1), (5 * 0), (0 * 9), (0 * 0), (45 * 11)
+
+Recursive multiplication 2: (-7 * 8), (-7 * -8), (7 * -8), (-7 * 9), (-7 * -9), (7 * -9)
+
+Format your output so it looks something like this:
+
+Fib(0) = 0
+Fib(3) = 2
+...
+
+7*8 = 56
+5*1 = 5
+5*0 = 0
+...
+
+http://www.mrferrante.com/apcs/WebLessons/LessonA9/Lab-A9-1.html
+
+Make sure their code has all the following (See the lab above for test cases):
+
+Write a recursive method that takes in a single integer (x >= 0) and returns the appropriate Fibonacci number.
+Write a recursive method that solves a multiplication problem of two positive integers.
+Write a recursive method that solves a multiplication problem of any two integers, whether positive or negative.
+
+-1 for each method that doesn't work
+-3 if missing a method
+-3 for each method that isn't even written recursively
+- 1 for missing reflection
+-0.5 for incomplete reflection
+
+0 1 1 2 2 5 8 13 21 34 55 89 144,233
+
+You can check functionality by adding this main method to their class and changing the method and class names as needed:
+
+    public static void main(String[] args) {
+        Fibonacci f = new Fibonacci();
+
+        int[] fibCases = {0,3,11,20};
+        int[] fibAns = {0,2,89,6765};
+        int fibScore = 0;
+        for (int i = 0; i < fibCases.length; i++) {
+            int n = fibCases[i];
+            int fn = f.fibonacci(n);
+            boolean correct = fn == fibAns[i];
+            if (correct) fibScore++;
+            System.out.println("Fib(" + n + ") = " + fn + " is " + correct);
+        }
+        System.out.println(fibScore + " / " + fibCases.length + " Fibonacci cases correct");
+
+        int[][] multPosCases = {{7,8},{5,1},{5,0},{0,9},{0,0},{45,11}};
+        int multPosScore = 0;
+        for (int i = 0; i < multPosCases.length; i++) {
+            int n = multPosCases[i][0];
+            int m = multPosCases[i][1];
+            System.out.print("Multiplying " + n + " x " + m + "\t");
+            int res = f.multiplyPositive(n, m);
+            boolean correct = n * m == res;
+            if (correct) multPosScore++;
+            System.out.println(n + "*" + m + " = " + res + " is " + correct);
+        }
+        System.out.println(multPosScore + " / " + multPosCases.length + " Positive Multiplication cases correct");
+        
+        int[][] multCases = {{-7,8},{-7,-8},{7,-8},{-7,9},{-7,-9},{7,-9}, {0, 0}, {0, -3}, {-3, 0}};
+        int multScore = 0;
+        for (int i = 0; i < multCases.length; i++) {
+            int n = multCases[i][0];
+            int m = multCases[i][1];
+            System.out.print("Multiplying " + n + " x " + m + "\t");
+            int res = f.multiplyAny(n, m);
+            boolean correct = n * m == res;
+            if (correct) multScore++;
+            System.out.println(n + "*" + m + " = " + res + " is " + correct);
+        }
+        System.out.println(multScore + " / " + multCases.length + " General Multiplication cases correct");
+    }
+
+
+    

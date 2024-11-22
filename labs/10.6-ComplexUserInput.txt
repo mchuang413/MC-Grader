@@ -1,0 +1,151 @@
+Lab 10.6 ComplexUserInput
+In some programs, user input could be more complex than a number, boolean or string. This makes it easier for users to enter commands without answering multiple prompts.
+
+Examples:
+
+Ask the user to enter 2 integers separated by white space such as 12 95
+Ask the user for a set of points (i.e. 12 4 15 99 88 123 ⇒ (12, 4) (15, 99), (88, 123)
+Ask the user to enter a command such as "buy 7 bananas" or "sell 8 apples"
+Let's take the first example as a starting point: When a user is asked for exactly two integers, separated by white space, your program could throw an exception if they don't enter valid input. For example consider the following invalid responses:
+
+those two
+1, 5
+1 5 8
+In order to handle invalid input gracefully, you will need to make sure the input is valid before trying to parse it. One way to do this for the above example is to do the following:
+
+Read the whole line and store it in a string.
+Make a new Scanner that will read the line (use the constructor that takes a String).
+Parse the line using that scanner by grabbing the next two tokens as ints.
+Before each call of nextInt(), you should first check that there is a next token that is an int (see hasNextInt() in the Scanner API).
+If the user entered extra numbers, you can detect that with one more call, but this time use hasNext() rather than hasNextInt() because you will need to detect if there is anything left regardless of whether it is an int. It is invalid for them to enter anything after the two ints.
+You should either have the two ints or have determined the input was invalid, so now you can return the input or print the appropriate error message and repeat the process.
+In order to return the input, you will need a class that stores all the data. In this case, the input is two integers, so we need a class that stores two int values.
+
+Make a Move class (named appropriately, for example P1_Wang_Michael_Move.java) with:
+
+Two instance variables that store the ints.
+A constructor that initializes the two ints
+Getters and setters as needed
+A toString method that returns a string with the two numbers in the format (1, 2)
+A static method that prompts the user with a given prompt and returns a Move object containing the two integers entered. Each time the user enters invalid input, a message informs them of the invalid input and they are prompted again. To be valid, the input must be exactly two integers, separated by white space.
+The method should take a Scanner and a String as parameters
+The Scanner is the scanner used to get information from the user
+The String is the string used to prompt the user for the integers
+Make a driver class (named appropriately: PX_LastName_FirstName_MoveDriver.java) that tests your Move class. The driver should have a main method that creates a Scanner for reading System.in and then keeps doing the following:
+
+Prompt the user for two integers using the static method you made in your Move class, passing the scanner you created and a prompt ("Enter two integers: ")
+Print the chosen numbers using the toString method
+Prompt the user to type q to quit or anything else to continue
+If they enter q, then the program quits
+otherwise the program continues the loop
+Example output
+Enter two integers: 3 5
+You chose (3, 5)
+Type q to quit or anything else to continue: sdfg
+Enter two integers: 3
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 5 6 7
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 23 456
+You chose (23, 456)
+Type q to quit or anything else to continue: 
+Enter two integers: two five
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 23f 1
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 23 4 more
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: one
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 12
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 
+Invalid format. Please enter exactly two integers separated by a space.
+Enter two integers: 123 87645
+You chose (123, 87645)
+Type q to quit or anything else to continue: q
+Test complete.
+
+Lab 10.6 ComplexUserInput
+
+Lab directions are here.
+
+Apply the usual header and filename penalties.
+Examine their code and apply -0.5 for each missing feature such as missing getters or missing constructor or missing/incorrect toString() method. Note that setters are not required.	
+Run the program and try to enter the user inputs in the sample output in the lab directions. Once you have an idea of how well the program works and what is broken, apply the following rubric.
+
+
+
+Only apply one of the following penalties (not cumulative):
+-3 If they don't have a Move class or their prompt method does not return a Move object or if the program is too broken to run through the sample output.
+
+-2 If the program is testable and produces the correct output when the user enters exactly 2 integers, but fails to handle invalid input correctly.
+
+-1 If their program is testable and correctly implements the cycle of repeatedly asking the user for two integers until 2 integers are entered, but fails to handle at least some cases, such as incorrectly accepting input with 3 or more tokens or failing the implement the outer loop that only quits when they press q.
+
+
+
+See next page for a sample solution:
+
+
+
+import java.util.Scanner;
+
+public class Move {
+    private static final String ERROR_MESSAGE = "Invalid format. Please enter exactly two integers separated by a space.";
+    private int a;
+    private int b;
+
+    public Move(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public int getB() {
+        return b;
+    }
+    
+    public String toString() {
+        return "(" + a + ", " + b + ")";
+    }
+    
+    public static Move readMove(Scanner in, String prompt) {
+        int a;
+        int b;
+        while (true) {
+            System.out.print(prompt);
+            Scanner s = new Scanner(in.nextLine());
+            if (s.hasNextInt()) {
+                a = s.nextInt();
+                if (s.hasNextInt()) {
+                    b = s.nextInt();
+                    if (!s.hasNext()) return new Move(a, b);
+                }
+            }
+            System.out.println(ERROR_MESSAGE);
+        }
+    }
+}
+
+public class MoveTester {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String p = "Enter two integers: ";
+        while (true) {
+            Move m = Move.readMove(in, p);
+            System.out.println("You chose " + m);
+            System.out.print("Type q to quit or anything else to continue: ");
+            if (in.nextLine().equals("q")) break;
+        }
+        System.out.println("Test complete.");
+    }
+}
+
+
+

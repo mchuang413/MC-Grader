@@ -1,0 +1,96 @@
+LAB 4.0 VirtualFriend
+Background:
+Professional programmers carefully design the classes they need before any coding is done. With well-designed classes, programming is much easier and the program has fewer bugs. Object-oriented design consists of deciding what classes are needed, what data they will hold, and how they will behave. All these decisions are documented (written up) and then examined. If something doesn't look right, it is fixed before any programming is done.
+
+Classes consist of three major components: attributes, constructors, and methods. An example is shown below.
+
+class CheckingAccount { 
+    // Attributes - variables & objects that describe the class
+    String accountNumber;
+    double accountBalance;
+
+    // Constructors - specialized methods that are called automatically
+    //                when an object is created with the "new" keyword.
+    //                The purpose of a constructor is to initialize
+    //                attributes and get the object set up for use.
+    CheckingAccount() {
+        accountNumber = "unassigned";
+        accountBalance = 0;
+    }
+    CheckingAccount(String myAccountNumber) {
+        accountNumber = myAccountNumber;
+        accountBalance = 0;
+    }
+
+    // Methods - the actions a class can perform
+
+    void deposit(double depositAmount) {
+         accountBalance += depositAmount;
+    }
+
+    void withdrawl(double withdrawlAmount) {
+        accountBalance -= withdrawlAmount;
+    }
+
+    double getBalance() {
+        return accountBalance;
+    }
+}
+Assignment:
+Download VirtualFriend.java and RunVirtualFriend.java. Compile both files and execute RunVirtualFriend.java. Then spend time reading through the code in VirtualFriend.java and playing around with the code in RunVirtualFriend.java.
+
+Once you are familiar with the code, modify the driver (RunVirtualFriend.java) to create a VirtualFriend george named "George" who is 8 years old. Note that you'll need to use the second constructor to do this. Then write whatever commands are needed (in the driver only) to produce the following output:
+
+Hey there!  I'm George!
+I'm a little hungry.
+George is sleeping...zzzz....
+George is sleeping...zzzz....
+I'm starving! Feed me!
+Feeding George...<<Munch munch>> I'm hungry!
+Feeding George...<<Munch munch>> I'm a little hungry.
+Feeding George...<<Munch munch>> I'm full.
+Feeding George...No thanks. I'm full.
+Open VirtualFriend.java and modify it as follows:
+
+Add another attribute to keep track of the VirtualFriend's favorite color as a String object.
+
+Add another constructor that can create a VirtualFriend with a given name, age, and favorite color. This VirtualFriend should start out full of food.
+
+The myName attribute already has a getter method and setter method. Add getter and setter methods for the myAge and myFavoriteColor attributes.
+
+Add a method named printFavoriteColor() that prints something like, "My favorite color is blue."
+
+Add a method named playSoccer() that prints something like "Bob is playing soccer! Whee!" and then increases hunger by one unit by calling the increaseHunger() helper method.
+
+Add two or more extra methods of your choice. You can also add more attributes if you'd like.
+
+Recompile VirtualFriend with the changes above and then modify ONLY THE DRIVER code in RunVirtualFriend in order to produce the following output.
+
+Hello there.  I'm Lizzy and my favorite color is Lavender!
+I'm 17 years old.
+
+Hi!  I'm Elsa and my favorite color is White!
+I'm 8 years old.
+
+Hi there Elsa. It's nice to meet you.  My name is Lizzy.
+Hi there Lizzy. It's nice to meet you.  My name is Elsa.
+
+Lizzy is playing soccer!  Whee!
+Lizzy is playing soccer!  Whee!
+Lizzy is playing soccer!  Whee!
+Lizzy is starving!
+Feeding Lizzy...<<Munch munch>> I'm hungry!
+Feeding Lizzy...<<Munch munch>> I'm a little hungry.
+Feeding Lizzy...<<Munch munch>> I'm full.
+
+Elsa is sleeping...zzzz....
+Elsa is sleeping...zzzz....
+Elsa is sleeping...zzzz....
+Elsa is starving!
+Feeding Elsa...<<Munch munch>> I'm hungry!
+I love math!  Did you know 1024 + 2048 equals 3072?
+
+// Additional output will be up to you based on whatever extra methods you wrote.
+In the submission form below,
+Copy and paste your updated DRIVER code into the submission form where it asks for the driver.
+Upload your VirtualFriend class (not the driver).

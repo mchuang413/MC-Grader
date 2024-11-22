@@ -1,0 +1,37 @@
+Lab 15.2 Permutations
+Assignment
+Write a program that produces random permutations of the numbers 1 to 10. A “Permutation” is a mathematical name for an arrangement. For example, there are six permutations of the numbers 1,2,3: 123, 132, 231, 213, 312, and 321.
+
+To generate a random permutation, you need to fill an ArrayList with the numbers 1 to 10 so that no two entries of the array have the same contents. You could do it by brute force, by calling Random.nextInt() until it produces a value that is not yet in the array. Instead, you should implement a smarter method. Make a second ArrayList and fill it with the numbers 1 to 10. Then pick one of those at random, remove it, and append it to the permutation ArrayList. Repeat ten times.
+
+Implement a class with the following method:
+
+// Returns an ArrayList of Integers that are a permutation of the numbers 1-10  
+ArrayList<Integer> nextPermutation()
+Instructions
+Turn in your code using the submission form below. Your class should be named PX_LastName_FirstName_Permutations
+
+The run output should consist of 10 lists of random permutations of the number 1 to 10. Example output is shown below:
+
+Random Permutation List Generator
+
+List 1: [4, 6, 8, 1, 9, 7, 10, 5, 3, 2]
+List 2: [6, 8, 1, 7, 3, 4, 9, 10, 5, 2]
+List 3: [2, 4, 9, 6, 8, 1, 10, 5, 7, 3]
+List 4: [8, 5, 4, 3, 2, 9, 6, 7, 1, 10]
+List 5: [10, 3, 2, 6, 8, 9, 5, 7, 4, 1]
+List 6: [9, 10, 3, 2, 1, 5, 6, 8, 4, 7]
+List 7: [3, 8, 5, 9, 4, 2, 10, 1, 6, 7]
+List 8: [3, 2, 4, 5, 7, 6, 9, 8, 10, 1]
+List 9: [4, 1, 5, 10, 8, 3, 6, 2, 7, 9]
+List 10: [3, 5, 2, 4, 1, 7, 9, 6, 8, 10]
+
+
+Lab 15.2 Permutations
+
+Lab instructions: 
+https://apcs.tinocs.com/lesson/A15/Z-2.md
+
+-1 If their method doesn't work. Method must return return arraylist of integers holding a permutation of 1-10
+
+standard reflection penalties

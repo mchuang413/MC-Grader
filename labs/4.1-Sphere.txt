@@ -1,0 +1,76 @@
+Lab 4.1 Sphere
+Background
+Now that you have designed several classes dealing with House Part shapes, it is time to try one that is a little more complex: a sphere. You may need to do some research to come up with all the formulas that would be needed to represent a sphere. First, try to write down all the instance variables, methods, and constructors that you will need to represent a Sphere class. Get as detailed as you can so you don’t have to change or add anything later. Getting a good design down on paper before you start writing code is very helpful for complex programs.
+
+Plan your class
+On scratch paper, plan out a Sphere class by brainstorming what you want to have inside the class. Be very specific, but don’t write actual Java code yet. Include in your brainstorm a plan for how you will draw your sphere using gpdraw.
+
+Attributes: (What variables and information do you want your Sphere class to keep track of?)
+
+Pro tip: Don't include data that can be calculated from other data. For example, students are often tempted to have an attribute to store the volume of the sphere, but it's better to have a method that computes and returns the sphere's volume whenever you want it.
+
+Constructors: (What will your default constructor do? What additional constructors will you provide?)
+
+You must have a default contructor (i.e. no parameters)
+You must have at least one non-default constructor
+Methods: (What methods will your Sphere class have?)
+
+You must have getter and setter methods (Lesson 4 explains both kinds of methods)
+You must include a draw() method that draws the sphere
+You must include a getVolume() method that computes and returns the volume of the sphere as a double. You may use the Java Math API to help compute volume, but that is neither necessary nor required.
+Pro tip: Methods that return values should not print anything. You can print the volume in your Driver by calling and printing the result of getVolume().
+
+You should include any other methods you think would be useful
+Write your class
+Translate your ideas from your scratch paper into a working Java class and submit your code below.
+
+public class Sphere {
+
+        // Attributes (also called instance variables)
+        ...
+
+        // Constructors
+        ...
+
+        // Methods
+        /* Getter & Setter methods */
+        ...
+
+        /* Other methods */
+        public void draw() { }
+        ...
+
+} // End of Sphere class
+Write a separate Driver class
+In a separate Driver class, write a main method to create and draw several different versions of your Sphere. Submit your Driver and Sphere class below, but before you do, make sure you have:
+
+Renamed all files/classes/constructors with your period and name. For example, P1_Wang_Michael_Sphere.java or P3_Ma_Jackie_Driver.java
+Tested your code to make sure it runs before submitting
+Included the standard header comment required for all labs (see previous lab directions)
+Additional Notes
+You can choose to make your sphere filled or not filled, but either way it should clearly be a sphere and not just a circle. Do a google search for sphere and you should see some examples. To meet the minimum requirements, your code must use at least one loop to draw part of the sphere.
+
+Challenges(optional):
+
+See if you can make your class customizable so it can draw both filled and non-filled spheres
+
+See if you can have a setter/constructor that can define a "shine" point on the filled in sphere
+
+See if you can make the sphere automatically calculate the shine point based on an x, y, z light source point in the constructor.
+
+Lab 4.1 Sphere
+Due:
+Friday, September 11, 2022 at 11:59 pm · McLeod, Per 3
+Friday, September 11, 2022 at 11:59 pm · McLeod, Per 7
+Directions: https://apcs.tinocs.com/lesson/A4/Z-2.md
+Rubric
+-1.5 if missing driver class
+-0.5 per missing method if they don't have a draw method, a getVolume method and setters and getters.
+-0.25 if missing default constructor or additional constructor
+-0.5 if no attributes 
+
+(use your judgment here you can dock off anywhere from 1 to 5 points based on how much it looks like a sphere)
+-2.5 if their sphere is more than just a single circle but not similar to a sphere 
+-5 if their sphere is just a circle (drawing an actual sphere is the biggest part of this lab)
+
+Also subtract any points for missing/incomplete header:

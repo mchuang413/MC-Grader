@@ -1,0 +1,201 @@
+Lab 15.3 Wordle Solver
+Everybody loves Wordle 😊. Today, you will be creating a cool Wordle Solver.
+
+Background
+Wordle is a variation of Mastermind where the player tries to guess a particular 5-letter-word using as few guesses as possible.
+
+
+
+Each time the player guesses a word, feedback is given for each letter:
+
+If that letter exists in the solution word at the same location, it will be highlighted in GREEN
+If that letter exists in the solution word BUT is NOT at the right place, it will be highlighted in YELLOW
+If that letter doesn't exist in the solution word at all, it will be highlighted in GRAY
+You can play Wordle once per day at The Official Wordle Website or you can play as much as you want at WordPlay.
+
+Program Overview
+Your goal is to write a program that solves Wordle puzzles. The game will start with an ArrayList of all possible words and as the user plays the game, the list of possible words will reduce to a single word, which is the Wordle solution. To meet the basic lab requirements, your solver needs to be a command-line program that solves Wordle puzzles containing no duplicate letters. In other words, your program must work for solutions that don't have two or more of the same letter. If you would like to your program to solve all valid Wordle words, complete the Gold version (see Gold Version section below).
+
+Program output will be printed to the terminal window and user input will be collected via keyboard input.
+
+Here's an example run to model your program after. Note that user input is case insensitive.
+
+----- Welcome to Wordle Solver -----
+Enter your initial guess: HOUSE
+Enter HOUSE as your guess on the Wordle website.
+Then enter the colors shown on Wordle (G for green, Y for yellow, N for gray): YYNNN
+
+Possible words:
+[RHINO, THORN, CLOTH, FROTH, WHOOP, PHOTO, CHORD, CHOIR, PHONY, THROW, MACHO, THROB, CHOCK, ABHOR, BROTH, THONG]
+Enter your next guess: rhino
+Enter RHINO as your guess on the Wordle website.
+Then enter the colors shown on Wordle (G for green, Y for yellow, N for gray): YGnnY
+
+Possible words:
+[CHORD, THROW, THROB]
+Enter your next guess: CHorD
+Enter CHORD as your guess on the Wordle website.
+Then enter the colors shown on Wordle (G for green, Y for yellow, N for gray): gGGgG
+Congratulations!  You found CHORD in 3 guesses!
+If the user enters a guess or colors containing anything other than 5 characters, print an error message and make them repeatedly try again.
+
+----- Welcome to Wordle Solver -----
+Enter your initial guess: JAVA
+>>> Sorry, invalid input. Your guess must be exactly 5 letters long.  Try again: ALBATROSS
+>>> Sorry, invalid input. Your guess must be exactly 5 letters long.  Try again: GREAT
+Enter GREAT as your guess on the Wordle website.
+Then enter the colors shown on Wordle (G for green, Y for yellow, N for gray): YNNYYNYN
+>>> Sorry, invalid input. Your color string must be exactly 5 letters long.  Try again.
+Enter GREAT as your guess on the Wordle website.
+Then enter the colors shown on Wordle (G for green, Y for yellow, N for gray): NNYYN
+...etc...
+How to get an ArrayList of Wordle words
+You will need to find a way to create an ArrayList of all 5-letter Wordle words. Here are some options:
+
+If you would like practice "hacking" websites to get the Wordle list, click here.
+If you would like to read the Wordle list from a pre-made textfile, download basic_wordle_words.txt for the Basic Version (no duplicate letters) or all_wordle_words.txt for the Gold Version. Then read the file using a Scanner and store each token into an ArrayList.
+Basic Version
+You will write two classes, a Wordle class that handles Wordle logic and a WordleDriver class that has a main() method to play the game.
+
+public class PX_LastName_FirstName_Wordle {
+
+    // To keep track of the possible Wordle words, declare an ArrayList of Strings
+
+    // Default constructor initializes the ArrayList and fills it with the starting words.
+    public PX_LastName_FirstName_Wordle() { }   
+
+    /**
+     * Given a word guess and the colors reported by the Wordle website, write a
+     * method that eliminates words from the list that cannot possibly be answers.
+     * For example, if a letter is marked as YELLOW then you can remove all words
+     * with that letter in that spot.  And what should you eliminate if you
+     * see a GREEN or GRAY letter?
+     * @param guess A String guess chosen by the user
+     * @param colorResult The String color for this guess reported by Wordle
+     */
+    // Your method here
+
+    /**
+     * Write a method that returns whether or not a given String is a valid Wordle guess.
+     * A guess is valid if it is exactly 5 alphabetic characters long.
+     * @param str A String guess chosen by the user
+     * @return Whether the given string is a valid guess
+     */
+    // Your method here
+
+    /**
+     * Write a method that returns whether or not a given String is a valid color String.
+     * A color String is valid if it is exactly 5 characters long and contains only the
+     * characters 'G', 'Y', or 'N' (case insensitive)
+     * @param str A String color reported by the Wordle website
+     * @return Whether the given color String is valid
+     */
+    // Your method here
+
+    /**
+     * Write a method such that if the list of possible words gets down to 1 possibility,
+     * return that solution word, otherwise return null.
+     * @return The solution word or null if no solution has been found yet
+     */
+    // Your method here
+
+    /**
+     * Write a method that returns the list size of the possible solution words remaining
+     * @return list size of the possible solution words remaining
+     */
+    // Your method here
+
+    /**
+     * Write a method that prints the list of possible solution words.  This list will get
+     * smaller over time until only one item remains, or no items if you are doing
+     * the Basic Version with words that don't have repeat letters.
+     */
+    // Your method here
+}
+public class PX_LastName_FirstName_WordleDriver {
+
+    public static void main(String[] args) {
+
+        // Make a new PX_LastName_FirstName_Wordle() object
+        // Print user directions and prompt for initial guess
+        // If the user's guess isn't valid, have them try again until they enter a valid guess.
+        // (A guess is valid if it is exactly 5 alphabetic characters long)
+
+        // Repeat the following while we haven't found a solution (or until we know one doesn't exist).
+                // Tell the user to enter their guess into the Wordle website
+                // Then have them enter the colors that correspond to their guess
+                // If the user's color string isn't valid, have them try again until they enter a valid color string.
+                // If we haven't found the solution, then reduce the list, print it, and ask the
+                // user the enter another guess
+        // end of loop
+
+        // Print congratulations message or sorry message if no answer could be found.
+Stuck? Need help? Click on "Need Help?" Discord button on the right.
+
+Gold Version
+The gold version of the lab is to make it work for all possible Wordle words, which includes words with duplicate letters. The logic for duplicate letters is more complex because sometime a GRAY color means that letter doesn't appear that many times rather than it not appearing at all. This is harder than it looks.
+
+Contest Version
+You must complete the Gold Version to enter the contest. In the Gold Version, the user always chooses the next word to guess. In the Contest Version, you must write an intelligent algorithm that chooses the next word to guess. The goal of the contest is to see whose algorithm can find Wordle solutions in the fewest number of guesses.
+
+In order to standardize testing, you must adhere to the following requirements:
+
+Your program must be able to calculate 1000 next guesses within a few seconds.
+Your Wordle class lab must implement the WordleSolver interface. Here is the WordleSolver class to download.
+You need to download and install the WordleTester library in BlueJ. The process is the same as installing gpdraw. Here is the WordleTester API if you want to see it.
+In addition to the WordleDriver you already wrote, you must add a ContestDriver. Code for this is given below.
+import wordletester.WordleTester;
+
+public class PX_LastName_FirstName_WordleContestDriver {
+
+    public static void main(String[] args) {
+
+        // Modify these two variables
+        boolean printMessages = false;  // Whether to print all guesses along the way
+        int numTrials = 100;            // Number of games to run
+
+        int totalTurns = 0;
+
+        for (int i = 0; i < numTrials; i++) {
+            WordleTester wt = new WordleTester();
+            PX_LastName_FirstName_Wordle w = new PX_LastName_FirstName_Wordle();
+
+            String guess = w.getNextGuess(null, null);
+            int turns = 1;
+
+            do {
+                String color = wt.getColorResponse(guess);
+                if (printMessages) {
+                    System.out.println("Guess:    " + guess);
+                    System.out.println("Response: " + color);
+                }
+                if (!wt.getColorResponse(guess).equals("GGGGG")) {
+                    guess = w.getNextGuess(guess, color);
+                    turns++;
+                }           
+            } while(!wt.getColorResponse(guess).equals("GGGGG"));
+
+            System.out.println("You found " + guess.toUpperCase() + " in " + turns + " turns");
+            totalTurns += turns;
+        }
+        System.out.println("It took you an average of " + ((double)totalTurns/numTrials) + " guesses to find each word." );
+    }
+}
+
+
+Lab 15.3 Wordle Solver
+
+Read lab directions here.
+
+Rubric:
+Apply the usual penalties for missing/incomplete header and incorrect file name.
+
+Test Basic Functionality:
+Run their code and either play a wordle game online, on your phone...etc or just pick a valid word and pretend to guess and give clues manually.
+Confirm that their code handles all the clues correctly for any words without repeating characters.
+Test their error checking by entering invalid input
+
+Apply Code Penalties:
+-1 Basic Functionality: program works and solves wordles without repeating letters consistently, but breaks when entering invalid user input
+-2 Barely Working: The program can be run and sometimes it solves a wordle, but the game generally crashes or behaves incorrectly before getting through a full game, even with only valid input
+-3 Very Broken: program is totally broken but there is evidence of a solid attempt

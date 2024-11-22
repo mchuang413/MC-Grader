@@ -1,0 +1,28 @@
+Lab 10.3 PigLatin
+Assignment
+Create a method named translateToPigLatin that receives a String, converts each word in the String to Pig Latin, and returns the new Pig Latinated string. Here's how to translate the English word englishWord into the Pig Latin word pigLatinWord:
+
+If there are no vowels in englishWord, then pigLatinWord is just englishWord + "ay". (There are ten vowels: 'a', 'e', 'i', 'o', and 'u', and their uppercase counterparts. ‘y’ is not considered to be a vowel for the purposes of this assignment, i.e. my becomes myay, why becomes whyay, etc.)
+Else, if englishWord begins with a vowel, then pigLatinWord is just englishWord + "yay".
+Otherwise (if englishWord has a vowel in it but doesn't start with a vowel), then pigLatinWord is end + start + "ay", where end and start are defined as follows:
+Let start be all of englishWord up to (but not including) its first vowel.
+Let end be all of englishWord from its first vowel on.
+But, if englishWord is capitalized, then capitalize end and "uncapitalize" start.
+"Astahay alay istavay, abybay." - The Piglatinator
+
+Before you turn in your program...
+
+Does your program re-capitalize words properly? (Basic version)
+Does your program handle simple punctuation? (Advanced version)
+
+Simple punctuation is defined as any sequence of punctuation marks that appear at the end of a word.
+Example: "Hello!!! How are you, Bill?"
+Try these Basic test cases:
+
+Hasta la vista baby ➜ Astahay alay istavay abybay
+Hey you Do you know how to speak in Pig Latin ➜ Eyhay ouyay Oday ouyay owknay owhay otay eakspay inyay Igpay Atinlay
+Try these Advanced test cases:
+
+Hasta la vista, baby! ➜ Astahay alay istavay, abybay!
+Hey you! Do you know how to speak in Pig Latin? ➜ Eyhay ouyay! Oday ouyay owknay owhay otay eakspay inyay Igpay Atinlay?
+You are encouraged to complete the Advanced version of this lab, but the Basic version is sufficient for full credit.

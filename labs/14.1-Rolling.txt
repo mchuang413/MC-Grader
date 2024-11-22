@@ -1,0 +1,20 @@
+Lab 14.1 Rolling
+Assignment
+Write a program that counts how many times three six-sided dice must be rolled until the values showing are all different.
+
+DeMorgan’s laws will be useful here. You will need to extend the application of DeMorgan’s laws beyond a double exit scenario.
+
+Instructions
+Write a driver that generates 10 output runs.
+
+Here is an example of two output runs.
+
+2 6 5  
+count = 1
+
+5 3 5  
+3 5 3  
+3 3 4  
+1 3 3  
+2 5 4  
+count = 5

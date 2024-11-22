@@ -1,0 +1,75 @@
+Lab 3.2 ChangeMachine
+Assignment:
+Your goal is to simulate a change machine that keeps track of currency (bills and coins) and dispenses efficient change during a transaction.
+
+Create a ChangeMachine class
+
+Add private instance variables to keep track of
+
+Number of pennies, nickels, dimes, quarters
+Notes:
+
+Students often want to add an instance variable for the total amount of money but this is a bad idea. You should calculate the total in a method that returns the total instead of storing the total in a variable. Why? Because the total can change depending on money added/taken out of the change machine. You should calculate the total on demand whenever it's needed using a helper method rather than try to update a variable to keep up with the current total as the program changes over time. Otherwise your total variable can get out of sync with the current total.
+Add a default constructor that sets the following default values:
+
+50 pennies
+
+40 nickels
+
+30 dimes
+
+20 quarters
+
+Add a second constructor that takes parameters specifying how many of each coin to start with.
+
+Add method(s) that add more change to the machine. You can do this using a single method that accepts each type of coin or you can have separate methods for adding more of each type of coin separately.
+
+Example usage (assuming a ChangeMachine named 'machine' has been created)
+machine.addPennies(45); // Adds 45 more pennies to the machine
+
+Create a method that will print the amount of each coin in the ChangeMachine. Use tab characters \t to get the formatting lined up. The output should look something like this:
+
+    The change machine contains:  
+    Quarters:       20  
+    Dimes:          30  
+    Nickels:        40  
+    Pennies:        50 
+Add a method that RETURNS the total amount of money in the ChangeMachine. The return type for this method should be double.
+
+Read Lesson 4, Page C for a quick review of writing methods that return a value.
+
+Your method should return a double and not have any parameters.
+Example:
+public double calculateTotal() { }
+
+Inside the method body you should calculate the total and return it.
+Example: double total = 0; total += // value of pennies total += // value of nickels …etc return total;
+
+If you keep track of the total cents instead of dollars, you will avoid rounding errors. You can still convert it to dollars as a double at the end.
+Add a method that PRINTS the total amount of money in the ChangeMachine. The return type for this method should be void.
+
+Example output:
+The change machine total is $17.28
+
+Note:
+
+If the second decimal place is a zero, the output will display as something like $15.2 That's ok.
+
+You can either recalculate the total in this method or (better yet) you can call upon your calculateTotal() method and then print the returned value.
+
+Add a dispenseChange method that calculates and dispenses efficient change for a desired amount of money. Your method should be void and print the output in the format shown below.
+
+For example, if a user wants change for $5.42 then the machine should give back
+
+    Change for $5.42  
+    Quarters:       21  
+    Dimes:          1  
+    Nickels:        1  
+    Pennies:        2  
+If efficient change can be made then print the format shown above and subtract the corresponding number of coins from each instance variable in the ChangeMachine.
+
+If efficient change cannot be made (for example, there aren't enough pennies or nickels) then print out an error message and do not reduce any of the instance variables.
+
+Insufficient coins! Cannot make efficient change for $5.42
+
+Finally, write a Driver class that creates an instance of your ChangeMachine and tests each method. For example, if you create a default ChangeMachine and print the total, it should be $87.1 If you then get change for $6.83, you should have fewer quarters, dimes, and pennies. Make sure the number of coins and the total are always correct after making a transaction. Test each method rigorously.

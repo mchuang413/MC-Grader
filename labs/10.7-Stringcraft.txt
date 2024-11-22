@@ -1,0 +1,296 @@
+Lab 10.7 StringCraft
+Directions
+Click here for Lab Directions
+
+Code style
+You may write all your methods as static methods in a Driver or you may use separate classes. Either way, your helper functions should work independently and not rely on any attributes.
+
+Coding Workflow
+During class, you should already have written top-down code for the main game loop. What remains is to implement the helper functions.
+
+Rather than write the entire program and hope that it works, you should write and test each helper function separately. Treat them each like separate Codingbat problems and write a battery of tests to ensure each helper method works on its own.
+
+For example, let's say you have a stringValue(String str) helper function that calculates and returns the raw value (not including moves) for a given String. Then after writing this function, you should test it thoroughly by running all categories of test cases on it. Something like this:
+
+// No runs or straights
+System.out.println("stringValue(R) = " + wordValue("R") + " ...should be 1"
+System.out.println("stringValue(RPA) = " + wordValue("RPA") + " ...should be 3");
+
+// Runs only
+System.out.println("stringValue(BB) = " + wordValue("BB") + " ...should be 4");
+System.out.println("stringValue(CCC) = " + wordValue("CCC") + " ...should be 9");
+System.out.println("stringValue(DDDD) = " + wordValue("DDDD") + " ...should be 16");
+
+// Straights only
+System.out.println("stringValue(AB) = " + wordValue("AB") + " ...should be 3");
+System.out.println("stringValue(GHI) = " + wordValue("GHI") + " ...should be 6");
+System.out.println("stringValue(MNOP) = " + wordValue("MNOP") + " ...should be 10");
+
+// Special case runs that wrap around the alphabet
+...
+
+// Runs and Straights combined
+...
+
+// etc...
+
+String Craft
+Objective:
+The objective of this game is to create the highest scoring string possible using legal moves on a given input
+string of uppercase letters. But be careful with your moves. Moves cost you points.
+Legal Moves:
+Characters can be moved by swapping the positions of two characters in the string. For example, in the string
+"EXAMPLE", the last E could be swapped with the X, producing the string "EEAMPLX", which would change the
+score from 7 to 8. Moves that lower the score are not allowed.
+points - cost = score
+E X A M P L E
+1 1 1 1 1 1 1 7 - 0 = 7
+E E A M P L X
+1 3 1 1 1 1 1 9 - 1 = 8
+Point Cost:
+Each move costs 1 point.
+Game Over:
+The game is over when no more legal moves are possible.
+Scoring:
+● Each letter has a base value of 1
+● Each consecutive matching letter is worth 2 more than the point value of the letter before it.
+● Each letter that is part of a run is worth 1 more than the previous letter in the run.
+○ A run is a set of letters that are each exactly 1 letter apart in the alphabet and are in alphabetical
+order, such as DEFGHIJ.
+○ For the purpose of determining a run, the letter A is considered to follow Z. So another possible
+run would be XYZABC.
+Problem
+Write a program that does the following:
+1) Prompt the user for a string length
+2) Generates a random string of that length made up of only uppercase letters.
+3) Prints out the string followed by the score for that string.
+4) If there are valid moves, ask the user to enter two numbers separated by a space to indicate the indexes
+of two characters to swap, otherwise print the final score and say game over.
+5) If the move is legal, the program should print out the resulting string and the new score, otherwise it
+should print a message saying the move was illegal and prompt the user again.
+6) Keeps repeating steps 4 and 5 until there are no more moves at which point it prints the final score and
+announces the game is over.
+Challenge
+Write a program that, given an input string, returns the maximum possible score achievable by playing this game.
+Example Game: Pts - Cost = Score
+A B D K F K H G Z A D N N
+1 2 1 1 1 1 1 1 1 2 1 1 3 17 - 0 = 17
+A B A K F K H G Z D D N N
+1 2 1 1 1 1 1 1 1 1 3 1 3 18 - 1 = 17
+B A A K F K H G Z D D N N
+1 1 3 1 1 1 1 1 1 1 3 1 3 19 - 2 = 17
+K A A B F K H G Z D D N N
+1 1 3 4 1 1 1 1 1 1 3 1 3 22 - 3 = 19
+Z A A B F K H G K D D N N
+1 2 4 5 1 1 1 1 1 1 3 1 3 25 - 4 = 21
+Z A A B F G H K K D D N N
+1 2 4 5 1 2 3 1 3 1 3 1 3 30 - 5 = 25
+no more moves possible
+Sample Run:
+Welcome to String Craft
+Enter the length of the string you would like to craft: 13
+ABDKFKHGZADNN is worth 17 points. Your score is 17.
+Enter the indexes of the characters you would like to swap: 10 11
+That move is illegal because it would lower your score to 14
+ABDKFKHGZADNN is worth 17 points. Your score is 17.
+Enter the indexes of the characters you would like to swap: 2 9
+ABAKFKHGZDDNN is worth 18 points. Your score is 17.
+Enter the indexes of the characters you would like to swap: 0 1
+BAAKFKHGZDDNN is worth 19 points. Your score is 17.
+Enter the indexes of the characters you would like to swap: 0 3
+KAABFKHGZDDNN is worth 22 points. Your score is 19.
+Enter the indexes of the characters you would like to swap: 0 8
+ZAABFKHGKDDNN is worth 25 points. Your score is 21.
+Enter the indexes of the characters you would like to swap: 5 7
+ZAABFGHKKDDNN is worth 30 points. Your score is 25.
+Game Over! Your final score is 25 points.
+AP Computer Science Name _______________________
+String Craft Classwork Date ______________ Period ____
+After reading the rules for String Craft, determine the String worth before/after the move and
+whether the move is legal.
+Ex:. Swap index 2 and 3: ABEC → ABCE String value: __5__ → __7__ Legal / Illegal
+1. Swap index 1 and 2: AEBD → ABED String value: _____ → _____ Legal / Illegal
+2. Swap index 0 and 1: EBEE → BEEE String value: _____ → _____ Legal / Illegal
+3. Swap index 1 and 3: AAAB → ABAA String value: _____ → _____ Legal / Illegal
+4. Swap index 2 and 3: CADZ → CAZD String value: _____ → _____ Legal / Illegal
+5. Swap index 1 and 3: BZAC → BCAZ String value: _____ → _____ Legal / Illegal
+Next, see if you can get a high score for the word ZSVBESYAMZ.
+Word: Z S V B E S Y A M Z
+score: _ _ _ _ _ _ _ _ _ _ = ___pts
+Move 1: _ _ _ _ _ _ _ _ _ _
+score: _ _ _ _ _ _ _ _ _ _ = ___ - 1 = ___pts
+Move 2: _ _ _ _ _ _ _ _ _ _
+score: _ _ _ _ _ _ _ _ _ _ = ___ - 2 = ___pts
+Move 3: _ _ _ _ _ _ _ _ _ _
+score: _ _ _ _ _ _ _ _ _ _ = ___ - 3 = ___pts
+Move 4: _ _ _ _ _ _ _ _ _ _
+score: _ _ _ _ _ _ _ _ _ _ = ___ - 4 = ___pts
+Move 5: _ _ _ _ _ _ _ _ _ _
+score: _ _ _ _ _ _ _ _ _ _ = ___ - 5 = ___pts
+String Craft Top Down Approach
+Using top-down design (i.e. use helper methods as if they already exist) write the main game logic for
+String Craft in 30 or fewer lines. All helper methods should return values instead of relying on class
+attributes.
+1) Prompt the user for a string length
+2) Generate a random string of that length made up of only uppercase letters.
+3) Print out the string followed by the score for that string.
+4) If there are valid moves, ask the user to enter two numbers separated by a space to indicate the indexes
+of two characters to swap, otherwise print the final score and say game over.
+5) If the move is legal, print out the resulting string and the new score, otherwise print a message saying
+the move was illegal and prompt the user again.
+6) Keep repeating steps 4 and 5 until there are no more moves at which point you should print the final
+score and announce the game is over.
+int strLen = promptForStringLength();
+String randString = generateRandomString(strLen);
+sopl(randString + " is worth " + wordValue(randString) + " points");
+
+
+
+Lab 10.7 StringCraft
+
+Read lab directions here.
+
+Rubric:
+Apply the usual penalties for missing/incomplete header and incorrect file name.
+
+Test basic Functionality:
+Run their code and choose different string lengths and confirm their generateString method correctly generates a random string of the correct length.
+Run their code and do a few moves with a random string of length 8.
+Modify their code to replace the random string with a hardcoded string to run each of the 5 sample runs (see below).
+Even if they fail sample run 1, you should still run cases 2 and 3 because the game ending instantly is a special case that some students may not have handled correctly.
+If the program is clearly not working even for cases 2 and 3, you don't need to run sample runs 4 and 5.
+
+Apply Code Penalties:
+-0.25 if the generateString method doesn't work correctly, but the program is at least barely working.
+-0.5 Nearly Perfect: Code has a minor issue (works for 4 out of 5 of the sample runs below)
+-1 Basic Functionality: program works and a full game can be played, but it is easy to break by entering invalid user input (works for sample runs 2 AND 3)
+-1.5 Mostly Working: program works most of the time and a full game can be played sometimes, but may break even in normal cases sometimes (Works for either sample run 2 OR 3)
+-2 Barely Working: The program can be played and some moves work, but the game generally crashes or behaves incorrectly before getting through a full game, even with only valid input (can complete at least 1 move correctly in sample run 2 or 3).
+-3 Very Broken: program is totally broken but there is evidence of a solid attempt
+
+Run these sample runs to find out how well their program works. Exact wording of error messages can vary.
+
+Sample Run 1: (Game is over immediately)
+
+Welcome to String Craft
+Enter the length of the string you would like to craft: 7
+
+AABCTEM is worth 16. Your score is 16.
+Game Over! Your final score is 16 points.
+
+Sample Run 2: (Only valid input and valid moves - only simple runs)
+
+Welcome to String Craft
+Enter the length of the string you would like to craft: 7
+
+ANBCMPO is worth 8. Your score is 8.
+Enter the indexes of the characters you would like to swap: 0 4
+
+MNBCAPO is worth 9. Your score is 8.
+Enter the indexes of the characters you would like to swap: 2 6
+
+MNOCAPB is worth 10. Your score is 8.
+Enter the indexes of the characters you would like to swap: 3 5
+
+MNOPACB is worth 13. Your score is 10.
+Enter the indexes of the characters you would like to swap: 5 6
+
+MNOPABC is worth 16. Your score is 12.
+Game Over! Your final score is 12 points.
+
+
+Sample Run 3: (Only valid input and valid moves - mix of runs and streaks)
+
+Welcome to String Craft
+Enter the length of the string you would like to craft: 13
+
+ABDKFKHGZADNN is worth 17. Your score is 17.
+Enter the indexes of the characters you would like to swap: 1 10
+
+ADDKFKHGZABNN is worth 20. Your score is 19.
+Enter the indexes of the characters you would like to swap: 0 8
+
+ZDDKFKHGAABNN is worth 22. Your score is 20.
+Enter the indexes of the characters you would like to swap: 0 7
+
+GDDKFKHZAABNN is worth 25. Your score is 22.
+Enter the indexes of the characters you would like to swap: 0 5
+
+KDDKFGHZAABNN is worth 28. Your score is 24.
+Enter the indexes of the characters you would like to swap: 0 2
+
+DDKKFGHZAABNN is worth 30. Your score is 25.
+Game Over! Your final score is 25 points.
+
+
+Sample Run 4: (Only valid input but some invalid moves)
+
+Welcome to String Craft
+Enter the length of the string you would like to craft: 7
+
+ANBCMPO is worth 8. Your score is 8.
+Enter the indexes of the characters you would like to swap: 0 1
+
+NABCMPO is worth 10. Your score is 9.
+Enter the indexes of the characters you would like to swap: 2 3
+That move is illegal because it would lower your score to 5
+
+NABCMPO is worth 10. Your score is 9.
+Enter the indexes of the characters you would like to swap: 0 4
+That move is illegal because it would lower your score to 8
+
+NABCMPO is worth 10. Your score is 9.
+Enter the indexes of the characters you would like to swap: 0 5
+
+PABCMNO is worth 13. Your score is 11.
+Game Over! Your final score is 11 points.
+
+
+
+
+Sample Run 5: (Out of bounds moves and invalid input)
+
+Welcome to String Craft
+Enter the length of the string you would like to craft: 10
+
+ALAAPBACBB is worth 14. Your score is 14.
+Enter the indexes of the characters you would like to swap: 1 10
+Invalid move. At least one of those indexes is out of bounds.
+
+ALAAPBACBB is worth 14. Your score is 14.
+Enter the indexes of the characters you would like to swap: -1 6
+Invalid move. At least one of those indexes is out of bounds.
+
+ALAAPBACBB is worth 14. Your score is 14.
+Enter the indexes of the characters you would like to swap: 15 3
+Invalid move. At least one of those indexes is out of bounds.
+
+ALAAPBACBB is worth 14. Your score is 14.
+Enter the indexes of the characters you would like to swap: 3
+Invalid indexes. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: 2 3 9
+Extra input detected. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: 
+Invalid indexes. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: garbage
+Invalid indexes. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: 2 trash
+Invalid indexes. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: 2 3 bad
+Extra input detected. You must give exactly two whole numbers separated by a space.
+Enter the indexes of the characters you would like to swap: 0 1
+
+LAAAPBACBB is worth 18. Your score is 17.
+Enter the indexes of the characters you would like to swap: 5 4
+
+LAAABPACBB is worth 23. Your score is 21.
+Enter the indexes of the characters you would like to swap: 6 0
+
+AAAABPLCBB is worth 31. Your score is 28.
+Enter the indexes of the characters you would like to swap: 5 9
+
+AAAABBLCBP is worth 38. Your score is 34.
+Enter the indexes of the characters you would like to swap: 6 8
+
+AAAABBBCLP is worth 61. Your score is 56.
+Game Over! Your final score is 56 points.

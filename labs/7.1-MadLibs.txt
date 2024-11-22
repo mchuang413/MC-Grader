@@ -1,0 +1,79 @@
+Lab 7.1 MadLibs
+Prerequisites
+You have read Lesson 7 and watch the printf video and Scanner video.
+
+Overview
+Mad Libs is a word game where the game master asks players to think of nouns, verbs, adjectives, etc. that will be inserted blindly into a story. The resulting story is often humorous, awkward, nonsensical, and silly.
+
+Optional links, for fun
+Play a classic Mad Libs example here: http://www.redkid.net/madlibs/
+Watch a Tonight Show clip here: https://www.youtube.com/watch?v=vQBdBhMwlcI
+Lab Instructions
+Write a MadLibs story of your own creation that meets the following criteria:
+
+Prompts users to enter various information using the Scanner API
+At least 2 integers (use nextInt())
+At least 2 doubles (use nextDouble())
+At least 6 Strings (use next() or nextLine())
+Displays the resulting story using a SINGLE printf statement.
+Use \n to insert line breaks
+A long String can be connected with +. For Example: "This is a single String that " + " is spread out over " + " several lines.";
+Example Run
+Do not copy the example. Make your own story and inputs.
+
+Welcome to Mad Libs!
+
+Please enter an emotion: embarrassed
+Please enter an adjective: silly
+Please enter a body part: knee
+Please enter an integer: 2
+Please enter an adjective: fuzzy
+Please enter an adverb: happily
+Please enter a body part: nose
+Please enter a double: 3.14159
+Please enter a verb ending in "ing": shouting
+Please enter a sport: baseball
+Please enter an emotion: scared
+Please enter an adjective: flexible
+Please enter a verb ending in "ing": running
+Please enter an integer: 223
+Please enter an integer: 51
+Please enter a food or drink: boba
+Please enter a double: 0.0001
+Please enter a plural food: crackers
+Please enter a profession: electrician
+
+Thanks!  Here's your Mad Lib Story:
+Pandemic by Mr. Ferrante
+
+In these times, it is important to stay embarrassed and to keep a silly knee. Keep in touch with your family and all 2 of your friends. Although life may no longer be fuzzy, happily take life into your own nose by taking action. First, get at least 3.14159 minutes of exercise each day by shouting or by playing baseball by yourself. Second, find ways to stay scared throughout the day by taking frequent breaks from screens, getting something flexible to eat, and by running or meditating. Finally, get a good night's rest and maintain a healthy diet. Doctors recommend 223 hours of sleep and drinking 51 cups of boba per day to stay hydrated. And don't forget the old adage: "0.0001 crackers a day keeps the electrician away!"
+
+.nextLine() Warning
+When using Scanner to acquire user input, there's something to be aware of.
+
+Using .nextLine() after using .next() or .nextInt() or .nextDouble(), etc. will result in a blank return value
+
+The reason for this is because .next(), .nextInt(), and .nextDouble() do not include the \n when you press Enter. However, .nextLine() works differently. It reads everything up to and including \n Enter.
+
+If you use .nextInt() to read a number from the user and then call .nextLine(), you will get an empty String because that's what was left between the number that was entered and the end of the line.
+
+Therefore, if you want to use .nextLine() after a call to .next() or .nextInt() or .nextDouble() you need to clear the blank input by calling .nextLine() once to clear the blank input and then a second time to read the line you wanted.
+
+Directions are here: https://apcs.tinocs.com/lesson/A7/Z-1.md
+
+2024 Rubric
+In 2024 this was an optional assignment, so students will be given full credit for a solid attempt even if there are bugs as long as they are at least close to meeting the requirements below.
+
+
+Rubric:
+
+-1 missing header
+-0.5 incomplete header
+-1 failed to meet requirements in the lab instructions section of the assignment
+	Requirements:
+Resulting story displayed using a SINGLE printf statement
+At least 2 integer prompts (using nextInt())
+At least 2 double prompts (using nextDouble())
+At least 6 String prompts (using next() or nextLine())
+
+If their code works in normal use, but is breakable (i.e. entering multi-word answers for some questions break it), just mention it in the comments but don't take off points.

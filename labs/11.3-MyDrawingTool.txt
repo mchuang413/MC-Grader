@@ -1,0 +1,98 @@
+Lab 11.3 MyDrawingTool
+Assignment
+In this lab you will create a subclass of DrawingTool that has more features and capabilities. You will change the way some of DrawingTool's methods work by overriding methods and you will add new methods to expand the tools DrawingTool offers. Finally, you will make the new DrawingTool interactive by implementing the MouseListener interface along with other interfaces.
+
+Learning Goals
+Use extends to create a subclass
+Understand the use of the super keyword in constructors and methods
+Enhance an existing class by adding attributes to a subclass
+Enhance an existing class by adding new methods to a subclass
+Change the default behavior of a parent class by overriding methods
+Implement mouse/keyboard interfaces to work in a larger ecosystem
+Video Demos
+It is highly recommended you watch these videos as they contain a detailed walkthrough example of the type of things you will be doing in this lab.
+
+Extending DrawingTool Demo Part 1
+Extending DrawingTool Demo Part 2
+Extending DrawingTool Demo Part 3
+Instructions
+Put aside whatever you created during class or while following along in the videos above and start again from scratch. Your brain needs this to make stronger connections, so you should try to apply what you learned independently.
+
+Create a new class that extends DrawingTool. Name this class with your name and period. Ex: P1_Wang_Michael_MyDrawingTool
+
+Add at least two constructors to your MyDrawingTool. Remember that the first line of code in a subclass constructor must be a call to the parent's constructor using super(...)
+
+Add at least two new attributes to your MyDrawingTool that are different from what we did during class or in the videos above. (You also include the attributeswe added during class or in the videos, but you need your own ideas beyond that.)
+
+Add at least two new methods to your MyDrawingTool that are different from what we did during class or in the videos above. (You also include the attributeswe added during class or in the videos, but you need your own ideas beyond that. Perhaps, you could add a new kind of shape?)
+
+Override at least two methods from DrawingTool and change the default behavior. Include an @Override annotation above these methods to tell Java you intend to override an inherited method. (You are welcome to override the same methods you did in class or in the video if you'd like.)
+
+Add at least two kinds of interesting/fun mouse interactivity that are different from what we did during class or in the video. This can be left or right button clicks that do something fun, mouse drags that do something fun, or keyboard presses combined with mouse drags that do something fun.
+
+Examples:
+
+If you click-and-drag, circles of random radii and colors are created at the mouse location
+Pressing the '+' and '-' keys changes the pen size so that when you click and drag you can draw pictures on the screen with the current pen size.
+Pressing the 'r' key enters "rectangle mode" so that when you click, drag, and release, a rectangle is created whose corners are located where you started and ended the mouse drag.
+
+See Mouse and Keyboard Events, below.
+
+Finally, write a Driver class that does two things:
+
+Demonstrates the overridden methods and the new methods you created
+Prints out directions in the console window so the user knows how to interact with your program using mouse/keyboard
+
+Name your Driver and MyDrawingTool classes according to your period and name, then submit them below.
+
+Basic Mouse Events
+In order to handle mouse events, you need to tell the SketchPad to listen to the events and have it automatically pass those events to you when they happen.
+
+Here's how to do this for basic mouse events:
+
+Implement the MouseListener interface by adding the implements keyword in your MyDrawingTool class definition:
+
+public class MyDrawingTool extends DrawingTool implements MouseListener {
+See the MouseListener API. You will have to import MouseListener and see what methods it requires you to have in your class.
+
+Add the required interface methods to your class. They should all be declared public.
+
+In each of your MyDrawingTool constructors, add the following code to tell your SketchPad to listen for mouse events and pass the info on to this class, where we handle the mouse methods. (this refers to yourself as an object)
+
+getPadPanel().addMouseListener(this);
+In your mouse methods, you will need to find out where the user clicked and which button was pressed. Notice that each MouseListener method receives a MouseEvent object when it is invoked. Look at the MouseEvent API because it has everything you need. Read the method details to see which methods tell you which button was pressed and where it was pressed.
+
+When you get the (x, y) location from the MouseEvent parameter it gives you the mouse coordinates based on the upper left corner of the drawing canvas. You will need to convert the mouse (x, y) into gpdraw's coordinates. To convert coordinates, you'll need to know the SketchPad's width and height:
+
+getPadPanel().getWidth();  // width of canvas
+getPadPanel().getHeight(); // height of canvas
+Write your own conversion functions. If you get absolutely stuck and can't figure it out yourself after trying, here is a solution. It's just basic math that you need to draw out on paper to understand.
+
+Mouse Motion and Keyboard Events
+The MouseEvent interface is for one-time events. If you want to process continuous events like mouse movement or dragging, you need to implement the MouseMotionListener interface. You can implement multiple interfaces by separating them with a comma:
+
+public class MyDrawingTool extends DrawingTool implements MouseListener, MouseMotionListener  {
+To use MouseMotionListener, you also need to register the SketchPad with a different listener:
+
+getPadPanel().addMouseMotionListener(this);
+    
+Finally, to handle keyboard events, implement the KeyListener interface and register your SketchPad as an event listener:
+
+getPadPanel().addKeyListener(this);
+    
+You will also need to request focus in the constructor so your padPanel will receive the key events:
+
+getPadPanel().requestFocusInWindow();
+    
+If you want your program to have different "modes" based on keypresses or if you want to have key-combinations with mouse events, one possible way is to keep track of your own variables and update them in the keyPressed and keyReleased methods. That way, the mouse listener methods can access whatever keyboard variables you care about.
+
+https://apcs.tinocs.com/lesson/A11/Z-3.md
+Minus one per requirement up to maximum penalty of 3. 
+-3 if code is too broken to test (max penalty)
+Add at least two constructors to your MyDrawingTool. Remember that the first line of code in a subclass constructor must be a call to the parent's constructor using super(...)
+Add at least two new attributes to your MyDrawingTool that are different from what we did during class. (You can keep what we did during class, but you need your own ideas beyond what we did.)
+Add at least two new methods to your MyDrawingTool that are different from what we did during class. (You can keep what we did during class, but you need your own ideas beyond what we did. Perhaps, you could add a new kind of shape?)
+Override at least two methods from DrawingTool and change the default behavior. Include an @Override annotation above these methods to tell Java you intend to override an inherited method. (You can use what we did in class if you'd like.)
+Add at least two kinds of interesting/fun mouse interactivity that are different from what we did during class. This can be left or right button clicks that do something fun, mouse drags that do something fun, or keyboard presses combined with mouse drags that do something fun.
+Does not have javadocs
+

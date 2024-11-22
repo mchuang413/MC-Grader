@@ -1,0 +1,45 @@
+Lab 9.4 Recursive Reverse and Palindrome
+Assignment
+You will write two functions using recursion. You may do all of your work in a single class named in the format PX_LastName_FirstName_RecursiveReverseAndPalindrome that includes a main method. All of the methods you create will be static, and the class should work in a similar manner to the Math class.
+
+Problem 1 - recursiveStringReverse
+You must solve this problem recursively.
+
+Create a recursive method named recursiveStringReverse that receives a String and returns a String that is the exact reversal of the characters in the first String. You may not use attributes to accomplish this. All code is done within the method using recursion. Please take time to think this problem through on your own. You should first spend time with paper and pencil finding a way to solve this problem recursively.
+
+Use these test cases for your run outputs:
+
+    123456789  
+    12345678  
+    A  
+    empty string
+When you think your solution is working, you can also test it in this codingbat problem.
+
+Problem 2 - recursiveIsPalindrome
+Create a recursive method named recursiveIsPalindrome that receives a String and returns a boolean value of true if the String is a Palindrome and false if it is not. A word is a palindrome if it reads the same forwards and backwards. For example, the word level is a palindrome.
+
+You should solve Problem 2 independently of Problem 1. Therefore, you cannot just return whether inputString.equals(recursiveStringReverse(inputString)); Instead, solve this isPalindrome problem without having to reverse the String. The point is to practice recursion.
+
+The idea of a palindrome can be extended to phrases or sentences if we ignore details like punctuation. Here are two familiar examples:
+
+Madam, I'm Adam  
+A man, a plan, a canal: Panama
+We can recognize these more elaborate examples as palindromes by considering the text that is obtained by removing all spaces and punctuation marks and converting all letters to their lower-case form. You must ignore the punctuation and spaces while processing the string recursively rather than removing them in a separate process.
+
+Madam, I'm Adam ==> madamimadam  
+A man, a plan, a canal: Panama ==> amanaplanacanalpanama
+If the "word" obtained from a phrase in this manner is a palindrome, then the phrase is a palindrome. Your method should ignore the case of the letters. A palindrome is determined by considering only alphabetic characters (a - z, A - Z) and numbers (0 - 9) as valid text.
+
+Note: The World’s Longest Palindrome, created at 8:02 PM on the 20th of February (a palindromic time/date - 20:02 02/20 2002) is reported at http://www.norvig.com/palindrome.html
+
+Use these test cases as inputs for your run outputs:
+
+radar  
+J  
+Lewd did I live, & evil I did dwel.  
+I like Java  
+Straw? No, too stupid a fad, I put soot on warts.  
+***Nurse!*** I spy gypsies....run!!!!!  
+empty string
+
+

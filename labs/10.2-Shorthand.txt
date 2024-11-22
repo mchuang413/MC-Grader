@@ -1,0 +1,24 @@
+Lab 10.2 Shorthand
+Assignment
+Create a method named translateToShorthand that receives a String and returns the String converted into shorthand. You may not use the String methods replace() or replaceAll() but you may write your own helper methods to replicate these String methods if you would like. Words are separated by at least one non-letter character, but it does not need to be a space. Any words that are not replaced should keep their capitalization form. There are many approaches to this problem. The simplified shorthand form of a string is defined as follows:
+
+Replace these four words: "and" with "&", "to" with "2", "you" with "u", and "for" with "4" whenever they appear as separate words within a sentence.
+Remove all vowels ('a', 'e', 'i', 'o', 'u'), whether lowercase or uppercase, unless the vowel appears by itself.
+For example, "For I shall love you forever" becomes "4 I shll lv u frvr"
+
+Before you turn in your program...
+
+Does your method replace words with mixed capitalization? Ex: And, AND, aND, etc.
+Does your method preserve capitalization for non-replacement words?
+Does your method work with ANY punctuation, not just spaces and specific punctuation?
+Did you follow the rule of NOT using the String methods replace or replaceAll?
+Try these test cases:
+
+Case        Expected Result
+A truck ==> A trck
+Me AND YOU forever! ==> M & u frvr!
+To Bill and Ted: Are you going to be EXCELLENT to towtrucks too???  ==> 2 Bll & Td: r u gng 2 b XCLLNT 2 twtrcks t???
+Look, here's a 3.14159 I made for you! And? How's it taste? ==> Lk, hr's a 3.14159 I md 4 u! &? Hw's t tst?
+MY mAmA aLWaYs said, "LIFe iS like a box of chocolates...you never know what you're gonna get!" ==> MY mm LWYs sd, "LF S lk a bx f chclts...u nvr knw wht u'r gnn gt!"
+!!aNd!! !tO? ****yOu***foR** fork toward young fo   ==> !!&!! !2? ****u*
+

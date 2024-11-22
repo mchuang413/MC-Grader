@@ -1,0 +1,16 @@
+LAB 13.1 ErrorCheck
+Assignment
+An IllegalArgumentException is an unchecked exception that is thrown to indicate that a method has been passed an illegal or inappropriate argument. Modify the [CheckingAccount](/static/lessons/A13/CheckingAccount.java) example from Lesson A5, Designing and Using Classes to throw an IllegalArgumentException in any of the following circumstances:
+when the account is constructed with a negative balance,
+
+when a negative amount is deposited, or
+
+when the account is overdrawn (when the amount withdrawn exceeds the current balance).
+
+Include the precondition and postcondition for each method in a comment above the method header.
+Instructions
+Modify the CheckingAccount. class to include precondition and postcondition comments and to handle the exceptions described above. Remember, this class should only be throwing exceptions. You will catch them in the driver.
+
+Write a test program to test that your modified class works properly. Include at least one try-catch block that catches one of the exceptions thrown by your CheckingAccount class and do something sensible in the catch block.
+
+For ease of grading, put your CheckingAccount and Driver classes in the same file. The class name must include your name and period, as always. If you've forgotten how, refer to Lab 5.2 Illusions.

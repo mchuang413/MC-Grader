@@ -27,9 +27,7 @@ Among your Taxes methods, include getters, setters, and a printTaxes method.
 The only public method that should print output is printTaxes().
 Consider which access modifier is appropriate for each field and method. Other classes should only be able to change the values of fields via methods.
 Your Taxes class should never print the wrong values no matter what you do in the Driver.
-Filenames
-Name your taxes class in the format PX_LastName_FirstName_Taxes
-Name your driver class in the format PX_LastName_FirstName_TaxesDriver
+
 
 Rubric:
 Lab 6.1 Taxes

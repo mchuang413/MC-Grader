@@ -1,0 +1,40 @@
+Lab 8.2 Happiness Detector
+Overview
+You are writing a class that can be used to determine if a number is happy or not. To do so, you will implement an interface. When a class implements an interface it is promising to implement all the methods listed in the interface. For this reason, other classes can safely call any of the interface methods on any instance of a class that implements that interface because it must have a method with that signature and return type defined.
+
+Implementing Interfaces
+To implement an interface, a class simply needs to use the implements keyword followed by the interface name:
+
+public class MyClass implements MyInterface {
+    // define attributes, constructors and methods...
+}
+An interface is declared like a class, but is just a list of methods with no implementation. Here is an example:
+
+public interface MyInterface {
+    public void printStuff();
+    public int calcStuff(int a);
+}
+In the example above, if MyClass implements MyInterface, then it MUST implement ALL methods listed in the interface declaration. For example:
+
+public class MyClass implements MyInterface {
+
+// implementing the printStuff method
+    public void printStuff() {
+        System.out.println("stuff");
+}
+
+// implementing the calcStuff method
+    public int calcStuff(int a) {
+        return a * 5;
+    }
+}
+Lab directions
+The class you write will be implementing the HappinessDetector interface, which is defined in the com.controlStructures package. Follow these steps to get started:
+
+Download the controlStructures.jar library.
+In BlueJ you will need to go to Tools -> preferences -> Libraries and add controlStructures.jar, just like you did for gpdraw. Don't forget to reload the Java Virtual Machine or close and restart BlueJ.
+Read the documentation for the com.controlStructures package so you will understand how to implement the HappinessDetector interface and how to use the Tester class to test your class.
+Write a class, using the standard naming convention PX_LastName_FirstName_HappinessDetector, that implements the HappinessDetector interface. If you get the message, "cannot find symbol - class xxx," it's because you either did not follow Step 1 and 2 completely or you did not import class xxx. See the top of an API for the import location.
+Create a Driver class that calls the static runTests method of the Tester class and passes it an instance of your PX_LastName_FirstName_HappinessDetector class. If you get the message, "cannot find symbol - class xxx," it's because you did not import that class
+Keep fixing bugs until your class passes all tests.
+

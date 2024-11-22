@@ -1,0 +1,22 @@
+Lab 12.2 Pictures
+Assignment
+Write a method that takes in, through its parameters, the number of rows and columns to print a multiplication table.
+
+There must be a margin of row and column headings for the table.
+
+The answer columns should be separated by a field-width of 5 columns.
+
+A blank line should be inserted between the column heading and the first row of the table.
+
+A precondition of the procedure is that the value of the row or column will be from 1..12.
+
+Here is an example run output for printTable(4,6):
+
+
+
+Write another method to print the following pyramid pattern of stars. The number of lines to print will be passed in to the method. Here is an example for n = 5:
+
+
+
+Write a method to draw a sunburst pattern using the DrawingTool. Your sunburst should consist of 360 separate lines, each one degree apart. For added flair, you can try looking up the Color class and use it to create colored lines. In the example picture below, each of the lines is a random color.
+

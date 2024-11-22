@@ -1,0 +1,54 @@
+Lab 10.1 Iterative Reverse and Palindrome
+Assignment
+You will create a class that will perform two different functions on Strings that are sent to it. All of the methods you create will be static, and the class should work in a similar manner to the Math class. Any helper methods that you write should be private because they are only used internally within the class.
+
+Problem 1 iterativeStringReverse
+Create an iterative method named iterativeStringReverse that receives a String and returns a String that is the exact reversal of the characters in the first String. An iterative solution is one that uses loops.
+
+Use these test cases for your run outputs:
+
+    123456789  
+    12345678  
+    A  
+    empty string
+Problem 2 iterativeIsPalindrome
+Create a method named iterativeIsPalindrome that receives a String and returns a boolean value of true if the String is a Palindrome and false if it is not. A word is a palindrome if it reads the same forwards and backwards. For example, the word level is a palindrome.
+
+You should solve Problem 2 independently of Problem 1. Therefore, you cannot just return whether inputString.equals(recursiveStringReverse(inputString)); Instead, solve this isPalindrome problem without having to reverse the String. The point is to practice iteration.
+
+The idea of a palindrome can be extended to phrases or sentences if we ignore details like punctuation. Here are two familiar examples:
+
+    Madam, I'm Adam  
+    A man, a plan, a canal: Panama
+We can recognize these more elaborate examples as palindromes by considering the text that is obtained by removing all spaces and punctuation marks and converting all letters to their lower-case form.
+
+    Madam, I'm Adam ==> madamimadam  
+    A man, a plan, a canal: Panama ==> amanaplanacanalpanama
+If the "word" obtained from a phrase in this manner is a palindrome, then the phrase is a palindrome. Your method should ignore the case of the letters. A palindrome is determined by considering only alphabetic characters (a - z, A - Z) and numbers (0 - 9) as valid text. You are not allowed to use replaceAll method and regular expressions. You may find the String and Character class API useful.
+
+Note: The World’s Longest Palindrome, created at 8:02 PM on the 20th of February (a palindromic time/date - 20:02 02/20 2002) is reported at http://www.norvig.com/palindrome.html
+
+Use these test cases as inputs for your run outputs:
+
+    radar  
+    J  
+    Lewd did I live, & evil I did dwel.  
+    I like Java  
+    Straw? No, too stupid a fad, I put soot on warts.  
+    ***Nurse!*** I spy gypsies....run!!!!!  
+    empty string
+
+    
+Lab 10.1 Problems 1 and 2 (String Reverse and Palindrome)
+Lab Instructions are here:
+http://www.mrferrante.com/apcs/WebLessons/LessonA10/Lab-A10-1.html
+
+Rubric:
+-1 missing reflection
+-0.5 incomplete reflection
+-1 using replaceAll / regular expressions (in comment tell them they are not allowed to use replaceAll)
+
+The autograder gets their score and you enter custom penalties in the Penalties column and write comments in the Extra Comments column
+
+
+You are not allowed to use replaceAll or regular expressions

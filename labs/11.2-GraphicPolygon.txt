@@ -1,0 +1,59 @@
+Lab 11.2 GraphicPolygon
+Background
+In Lab Assignment A6.2, we created a RegularPolygon class that maintained a large number of properties for any polygon of a given number and length of sides. By extending the RegularPolygon class to include the capabilities of the DrawingTool class, it is possible to display a graphic representation of any polygon. For example, a 9-sided regular polygon (nonagon) would be represented as follows:
+
+
+
+Assignment
+Extend the RegularPolygon class created in Lab Assignment A6.2 to create a GraphicPolygon class. Use the following declarations as a starting point for your lab work.
+
+class  GraphicPolygon  extends  RegularPolygon{  
+    private  DrawingTool pen =  new  DrawingTool(new  SketchPad(400, 400));  
+    private double  xPosition, yPosition;  
+
+    // constructors
+
+    // Initializes a polygon of numSides sides and sideLength  
+    // length in the superclass. The polygon is centered at  
+    // xPosition = yPosition = 0  
+    public  GraphicPolygon(int  numSides,  double  sideLength){  
+    }
+
+    // Initializes a polygon of numSides sides and sideLength  
+    // length in the superclass. The polygon is centered at  
+    // xPosition = x and yPosition = y  
+    public  GraphicPolygon(int  numSides,  double  sideLength,  double  x,  double  y){  
+    }
+
+    // public methods
+
+    // Sets xPosition = x and yPosition = y to correspond to the new  
+    // center of the polygon  
+    public void  moveTo(double  x,  double  y){  
+    }
+
+    // Draws the polygon about the center point (xPosition, yPosition).  
+    // Uses properties inherited from RegularPolygon to determine the  
+    // number and length of the sides, the radius of the inscribed circle,  
+    // and the vertex angle with which to draw the polygon  
+    public void  draw(){  
+    }  
+}
+Write two constructor methods. The first constructor initializes the number and length of the sides of a polygon centered about the point (0, 0). The Second constructor is used to initialize a polygon a specified number and length of sides with a center at a specified x and y location.
+
+Write a method that draws the polygon onto the Sketchpad window using the movement and drawing methods available in the DrawingTool class.
+
+Write a method that moves the center of the polygon to a specified x and y location.
+
+Write a testing class with a main() method that constructs a GraphicPolygon and calls each method. Sample usage for a polygon with 9 sides of length 100 would give:
+
+GraphicPolygon gPoly =  new  GraphicPolygon(9, 100);  
+gPoly.draw();
+Instructions:
+Use the following values to test your functions:
+Square: number of sides = 4, length of side = 150
+Octagon: number of sides = 8, length of side = 100
+Enneadecagon: number of sides = 19, length of side = 50
+Enneacontakaihenagon: number of sides = 91, length of side = 10
+
+

@@ -1,0 +1,213 @@
+Lab 8.1 CheckMail
+Background
+The U.S. post office has rules about mailing packages. A package cannot be mailed first class if the sum of its length and girth is greater than 100 inches, or if the package weighs more than 70 pounds.
+
+Girth is the perimeter around the height and width, where the length is defined as the longest of the three dimensions.
+
+Here is a visual representation of girth:
+
+
+
+Assignment
+Write a program that takes in the weight of the package and the three dimensions of the package in any order. (You may put all your code in the main() method.) The program should determine the longest dimension of the package, calculate the girth, and compute the size of the box. The program should then print out one of the following messages about this package:
+
+Package is too large and too heavy.
+Package is too large.
+Package is too heavy.
+Package is acceptable.
+Let’s look at how to design this class.
+
+Stepwise refinement 1 - Overall sections of this problem:
+Get data from user
+Solve math
+Print answer
+Stepwise refinement 2 - More detailed pseudocode version:
+Prompt user for three dimensions
+Prompt user for weight
+
+Determine longest of three dimensions
+
+Calculate the girth using the other two dimensions
+
+if package is too big and too heavy, print appropriate message
+
+else if package is too big, print appropriate message
+else if package is too heavy, print appropriate message
+else print package is acceptable
+Requirements
+Do all your work in the main() method.
+The user can enter the 3 dimensions in any order so you need to work out which is the largest regardless of the order they entered the dimensions in.
+There are four distinct cases for possible package types. Make sure you've tested your code and that it works for all the cases. The cases are shown below.
+The program should print out exactly one of the following messages about any given package:
+Package is too large and too heavy.
+Package is too large.
+Package is too heavy.
+Package is acceptable.
+
+Read the directions for the lab here:
+https://apcs.tinocs.com/lesson/A8/Z-1.md 
+
+Test Cases:
+A quick way to check test cases: (scroll down)
+Test Case/Input
+Longest
+Girth
+Desired Output
+Rule/Edge Case Tested
+10 20 30 Weight: 50
+30
+60
+Package is acceptable.
+longest length at the end
+10 30 20 Weight: 50
+30
+60
+Package is acceptable.
+longest length in the middle.
+30 10 20 Weight: 50
+30
+60
+Package is acceptable.
+longest length at the beginning
+10 25 25 Weight: 50
+25
+70
+Package is acceptable.
+Two largest are equal
+10 10 40 Weight: 50
+40
+40
+Package is acceptable.
+Two smallest are equal
+10 40 10 Weight: 50
+40
+40
+Package is acceptable.
+Two smallest are equal
+25 10 25 Weight: 50
+25
+70
+Package is acceptable.
+Two largest are equal
+40 10 20 Weight: 80
+40
+60
+Package is too heavy
+Overweight package with length + girth <= 100
+40 5 20 Weight: 80
+40
+50
+Package is too heavy
+Overweight package with length + girth <= 100
+60 11 10 Weight: 71
+60
+42
+Package is too large and too heavy.
+Both length + girth > 100 AND overweight package
+60 11 10 Weight: 70
+60
+42
+Package is too large.
+Length + girth > 100 
+10 10 10 Weight: 10
+10
+40
+Package is acceptable.
+All three equal
+50 50 50 Weight: 10
+50
+200
+Package is too large.
+All three equal
+10 20 40 Weight: 50
+40
+60
+Package is acceptable.
+Length + girth = 100
+25 25 10 Weight: 10
+25
+70
+Package is acceptable.
+First two equal and greater than last one
+
+
+First, verify the student correctly determined which of the three input values is largest.  Users can enter the values in any order.  Some students will use swapping code to make dim1 be the largest.  That’s fine.  Others will use if-statements to determine which input is largest.  That’s fine too.  The point is to calculate the girth of a package, which is the perimeter around the two shorter dimensions which can be any of the inputs.
+
+You can add a print statement that prints out the values they used to calculate girth to confirm they are choosing the correct values.
+
+Next, verify that the student’s if-else statements accurately print only one message and that it catches all possible values.
+
+if (tooLarge && tooHeavy)
+	System.out.println("too large and too heavy");
+
+else if (tooLarge && !tooHeavy)
+	System.out.println("too large");
+
+else if (!tooLarge && tooHeavy)
+	System.out.println("too heavy");
+
+else
+	System.out.println("acceptable");
+
+Rubric (penalties are cumulative)
+-1 If the program does not pass all test cases.
+-1 if the program does not pass at least half the cases
+-1 if not calculating girth correctly
+-1 if not identifying the longest length correctly
+-1 if directions not followed (i.e. program was not even following the basic instructions such as not taking the right parameters or not even attempting to calculate the girth)
+
+Subtract reflection points as per the usual reflection rubric
+
+Use this code to quickly run through test cases:
+
+public class CheckMailDriver {
+    static int[] dimension1 = new int[]{10, 10, 30, 10, 10, 10, 25, 40, 40, 60, 10, 10, 30, 10, 10, 60, 10, 50, 10, 25};
+    static int[] dimension2 = new int[]{20, 30, 10, 25, 10, 40, 10, 10, 5, 11, 20, 30, 10, 25, 10, 11, 10, 50, 20, 25};
+    static int[] dimension3 = new int[]{30, 20, 20, 25, 40, 10, 25, 20, 20, 10, 30, 20, 20, 25, 40, 10, 10, 50, 40, 10};
+    static int[] weight = new int[]{50, 50, 50, 50, 50, 50, 50, 80, 80, 71, 50, 50, 50, 50, 50, 70, 10, 10, 50, 10};
+    static int[] longest = new int[]{30, 30, 30, 25, 40, 40, 35, 40, 40, 60, 30, 30, 30, 35, 40, 60, 10, 50, 40, 25};
+    static int[] girth = new int[]{60, 60, 60, 70, 40, 40, 70, 60, 50, 42, 60, 60, 60, 70, 40, 42, 40, 200, 60, 70};
+    static String[] output = new String[]{"Package is acceptable.", "Package is acceptable.", 
+                                "Package is acceptable.", "Package is acceptable.", 
+                                "Package is acceptable.", "Package is acceptable.", 
+                                "Package is acceptable.", "Package is too heavy.",
+                                "Package is too heavy.", "Package is too large and too heavy.",
+                                "Package is acceptable.", "Package is acceptable.",
+                                "Package is acceptable.", "Package is acceptable.",
+                                "Package is acceptable.", "Package is too large.",
+                                "Package is acceptable.", "Package is too large.",
+                                "Package is acceptable.", "Package is acceptable."};
+    static String[] ruleTested = new String[]{"longest length at the end", "longest length in the middle.",
+                                        "longest length at the beginning", "Two largest are equal",
+                                        "Two smallest are equal", "Two smallest are equal",
+                                        "Two largest are equal", "Overweight package with length + girth <= 100",
+                                        "Overweight package with length + girth <= 100", "Both length + girth > 100 AND overweight package",
+                                        "longest length at the end", "longest length in the middle",
+                                        "longest length at the beginning", "two largest are equal",
+                                        "two smallest are equal", "length + girth > 100",
+                                        "all three are equal", "all three are equal",
+                                        "Length + girth = 100", "First two equal and greater than last one"};
+    public static void main(String[] args) {
+        for(int i = 0; i < dimension1.length; i++){
+            System.out.print("THEIR OUTPUT: ");
+            checkMail(dimension1[i], dimension2[i], dimension3[i], weight[i]);
+            System.out.println("CORRECT OUTPUT: " + output[i]);
+            System.out.println("If they didn't get this case right, copy paste this as a comment:");
+            System.out.println("Check the case where the dimensions are " + dimension1[i] + ", " + dimension2[i] + ", " 
+                            + dimension3[i] + ", and weight is " + weight[i] + ", the correct output should be \"" 
+                            + output[i] + "\".");
+            System.out.println("-------------------------");
+        }
+    }
+    public static void checkMail(double d1, double d2, double d3, double w){
+        /*
+         * Directions:
+         * 1. Copy paste their code here 
+         * (don't include the part where they use scanner to get the values)            
+         * 2. Change the variable names. Dimensions -> a, b, c, weight -> w
+         * (the first dimension value to be read in is a, second is b, third is c)
+         * 3. Run this main method and check if they are getting the correct answer for each case
+         */
+    }
+}
+

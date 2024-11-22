@@ -1,0 +1,114 @@
+Lab 12.3 LoanTable
+Background
+When buying a home, a very important financial consideration that many buyers face is obtaining a qualifying loan from a financial institution. Interest rates can be fixed or variable and there are service charges called ‘points’ for taking out a loan. One ‘point’ is equal to 1% of the loan amount (called principal) borrowed. Taking out a loan of $150,000 with a 2 point charge will amount to a cost of $3,000 for obtaining the loan - before you ever make your first mortgage payment! Some banks and financial lending institutions offer lower interest rates but require higher points, and vice versa. Usually, the more points you pay, the lower the interest rate. It is helpful to know what the monthly mortgage payment will be for a given loan amount with different interest rates.
+
+The monthly payment on a loan is determined using three inputs:
+
+The amount of the loan (principal).
+
+The number of years for the loan to be paid off.
+
+The annual interest rate of the loan.
+
+The formula for determining payments is:
+
+
+
+p = principal, amount borrowed
+k = monthly interest rate (annual rate/12.0)
+n = number of monthly payments (years * 12)
+c = (1 + k)n
+a = monthly payment (interest and principal paid)
+
+Assignment
+Write a program that prompts the user for the following information:
+
+The amount of the loan
+The length of the loan in years
+A low interest rate in %
+A high interest rate in %
+Print out the monthly payment for the different interest rates from low to high, incremented by 0.25%.
+
+Run the following three samples:
+
+Mortgage problem
+
+Principal = $100000.00  
+Time = 30 years  
+Low rate = 11%  
+High rate = 12%
+Annual Interest Rate	Monthly Payment
+11.00	952.32
+11.25	971.26
+11.50	990.29
+11.75	1009.41
+12.00	1028.61
+Here is an example run of the program:
+
+Principal: $100000.00
+Low rate: 11
+High rate: 12
+Years: 30
+Annual Interest Rate     Monthly Payment     
+11.00                    952.32              
+11.25                    971.26              
+11.50                    990.29              
+11.75                    1009.41             
+12.00                    1028.61             
+Your program should make use of the built-in pow method located in the Math class.
+
+You can format the output to round decimals to exactly two decimal places, including 00 by using printf as explained in lesson 7
+
+Your program must make use of separate methods for the data input section and the printing section of the assignment.
+
+Instructions
+Write the program. Confirm that it works to the screen using the above sample output.
+
+Here are two sample sets of inputs. Make sure to print both the anual interest rate and the monthly payment on each line as shown above.
+
+Run 1:	Principal	187450.00
+Low rate	8.00
+High rate	12.00
+Years	30
+Run 2:	Principal	12000.00
+Low rate	10.00
+High rate	12.00
+Years	5
+
+
+Lab 12.3 Loan Table
+Lab directions are here:
+http://www.mrferrante.com/apcs/WebLessons/LessonA12/Lab-A12-3.html
+https://apcs.tinocs.com/lesson/A12/Z-3.md 
+
+Rubric:
+-1 not following lab instructions (specify which instructions they didn't follow in the comment)
+-1 output does not work (try the example test cases in the directions and possibly some extra cases)
+-1 missing annual interest rate/monthly payment
+-0.25 if the output looks very different from the expected output.
+
+
+Test Cases:
+Mortgage problem
+Principal = $100000.00
+Time = 30 years
+Low rate = 11%
+High rate = 12%
+Annual Interest Rate
+Monthly Payment
+
+
+
+
+11.00
+ 952.32
+11.25
+ 971.26
+11.50
+ 990.29
+11.75
+1009.41
+12.00
+1028.61
+
+
