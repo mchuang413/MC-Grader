@@ -1,8 +1,8 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import {autograde} from '../utils/ai.js';
 import fs from 'fs';
 import path from 'path';
+import autograde from '../utils/ai.js';
 
 const router = express.Router();
 router.use(fileUpload());
@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
     }
     console.log(text);
     const answer = await autograde(text, lab);
-    if(!answer) res.status(400, "Lab not found");
-    res.json(answer);
+    // if(!answer) res.status(400, "Lab not found");
+    // res.json(answer);
 });
 
 router.get('/labs', async (req, res) => {
